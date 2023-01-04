@@ -1,13 +1,13 @@
 * {
   font-family: "Montserrat", sans-serif;
-  color: #c3c3c3;
+  color: #929395c0;
 }
 
 body {
   background-color: #101112;
   margin: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 50px 1fr 60px;
@@ -31,6 +31,33 @@ main {
   grid-column: 2/3;
   background-color: #101112;
   border-left: 1px solid #0b0c0d;
+  display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  flex: 1;
+  height: 200px;
+  min-width: 300px;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  flex: 1;
+  border-collapse: collapse;
+}
+
+.remove-button {
+  width: 18px;
+  transition: 0.3s;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.2);
 }
 
 footer {
