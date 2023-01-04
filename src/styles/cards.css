@@ -1,0 +1,50 @@
+.card {
+  padding: 10px;
+  background-color: var(--sidebar);
+  display: flex;
+  align-items: center;
+}
+
+.card div {
+  margin: 5px;
+}
+
+.check {
+  height: 12px;
+  width: 12px;
+  border: 2px solid var(--header);
+  border-radius: 3px;
+}
+
+.title {
+  flex: 1;
+  /* margin-right: 2rem; */
+}
+
+/* keeping tools in seperate container allows spacing of title/tools
+*   & allows for inner spacing rules between individual tools
+*/
+.tools {
+  flex: 0.4;
+  border: 2px solid blue;
+  display: flex;
+}
+
+.tools div {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.trash {
+  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
+    contrast(83%);
+  width: 18px;
+  transition: 0.2s;
+}
+
+.trash:hover {
+  transition: 0.2s;
+  filter: invert(12%) sepia(49%) saturate(502%) hue-rotate(178deg)
+    brightness(98%) contrast(93%);
+  cursor: pointer;
+}

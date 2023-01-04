@@ -1,13 +1,16 @@
+@import "./styles/cards.css";
+
 :root {
   --main: #f8fafc;
   --sidebar: #dfe4e9d2;
   --header: #91b7ec;
-  --border-dark: #1e293b;
+  --border: #7a8faf;
+  --font: #929395c0;
 }
 
 * {
   font-family: "Montserrat", sans-serif;
-  color: #929395c0;
+  color: var(--font);
 }
 
 body {
@@ -39,43 +42,7 @@ header {
   padding: 5rem 10rem;
 }
 
-.card {
-  padding: 10px;
-  background-color: var(--sidebar);
-  display: flex;
-  align-items: center;
-}
-
-.card div {
-  margin: 5px;
-}
-
-.trash {
-  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
-    contrast(83%);
-  width: 18px;
-  transition: 0.2s;
-}
-
-.trash:hover {
-  transition: 0.2s;
-  filter: invert(12%) sepia(49%) saturate(502%) hue-rotate(178deg)
-    brightness(98%) contrast(93%);
-  cursor: pointer;
-}
-
-/* .remove-button {
-  width: 18px;
-  transition: 0.3s;
-}
-
-.remove-button:hover {
-  cursor: pointer;
-  transition: 0.3s;
-  transform: scale(1.2);
-} */
-
-footer {
+*/ footer {
   background-color: var(--main);
   grid-row: 3/4;
   grid-column: 2/3;
