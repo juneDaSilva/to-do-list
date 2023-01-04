@@ -40,5 +40,6 @@ header {
 .main-container {
   grid-row: 2/3;
   grid-column: 2/3;
-  padding: 5rem 10rem;
+  padding: 2rem 8rem;
+  overflow-y: auto;
 }

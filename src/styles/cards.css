@@ -1,40 +1,94 @@
+/* Outer card styling */
 .card {
-  padding: 10px;
+  padding: 2px 10px;
   background-color: var(--sidebar);
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
+  border-radius: 5px;
 }
 
 .card div {
   margin: 5px;
 }
 
+/* ----------- ----- Inner card styling ------ --------- */
+
+/* --- Checkmark styling --- */
 .check {
-  height: 12px;
-  width: 12px;
+  height: 15px;
+  width: 15px;
   border: 2px solid var(--header);
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
+.check:hover {
+  border: 2px solid rgba(16, 86, 249, 0.87);
+  cursor: pointer;
+}
+
+/* --- title --- */
 .title {
   flex: 1;
+  font-size: 18px;
 }
 
-/* 
+/* --- Right side tools block -- ** 
 *   keeping tools in seperate container allows spacing of title/tools
 *   & allows for inner spacing rules between individual tools
 */
 .tools {
-  flex: 0.4;
-  border: 2px solid blue;
+  flex: 0.2;
   display: flex;
 }
 
 .tools div {
   margin-right: 10px;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* --- details --- */
+.details {
+  margin-right: 10px;
+  width: 25px;
+  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
+    contrast(83%);
+}
+
+.details:hover {
+  filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
+    brightness(95%) contrast(95%);
+  cursor: pointer;
+}
+
+/* --- Due date --- */
+.due-date {
+  font-size: 12px;
+}
+
+.due-date:hover {
+  cursor: pointer;
+  color: var(--header);
+}
+
+/* --- Edit --- */
+.edit {
+  margin-right: 13px;
+  width: 22px;
+  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
+    contrast(83%);
+}
+
+.edit:hover {
+  filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
+    brightness(95%) contrast(95%);
+  cursor: pointer;
+}
+
+/* --- Delete --- */
 .trash {
   filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
     contrast(83%);
