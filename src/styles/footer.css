@@ -1,0 +1,41 @@
+footer {
+  background-color: var(--main);
+  grid-row: 3/4;
+  grid-column: 2/3;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.footer-par {
+  margin-left: 5px;
+  position: relative;
+}
+
+.ghlogo {
+  position: absolute;
+  bottom: -2px;
+}
+
+.ytlogo {
+  position: absolute;
+  left: 205px;
+  bottom: -3px;
+}
+
+.logos {
+  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
+    contrast(83%);
+  width: 22px;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.logos:hover {
+  scale: 1.3;
+  transition: 0.3s;
+}

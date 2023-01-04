@@ -18,10 +18,10 @@
 
 .title {
   flex: 1;
-  /* margin-right: 2rem; */
 }
 
-/* keeping tools in seperate container allows spacing of title/tools
+/* 
+*   keeping tools in seperate container allows spacing of title/tools
 *   & allows for inner spacing rules between individual tools
 */
 .tools {
