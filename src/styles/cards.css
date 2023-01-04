@@ -1,11 +1,22 @@
 /* Outer card styling */
 .card {
   padding: 2px 10px;
-  background-color: var(--sidebar);
+  /* background-color: var(--sidebar); */
+  background-color: #000;
   display: flex;
+  color: white;
   align-items: center;
   margin-bottom: 8px;
-  border-radius: 5px;
+  border-radius: 2px;
+  /* transition: 0.1s; */
+}
+
+.card:hover {
+  transition: 0.1s;
+  color: black;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 2px;
 }
 
 .card div {
