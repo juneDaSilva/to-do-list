@@ -1,7 +1,7 @@
 .sidebar {
   grid-row: 2/4;
   grid-column: 1/2;
-  background-color: rgba(255, 255, 33, 0.941);
+  background-color: rgb(255, 255, 33);
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -31,4 +31,10 @@
 
 .tab {
   margin-left: 20px;
+}
+
+/* Only active on burger-menu toggle */
+.side-show {
+  transform: translateX(0);
+  transition: 0.5s;
 }

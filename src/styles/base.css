@@ -46,6 +46,11 @@ header {
   max-width: 80rem;
 }
 
+.inactive-main {
+  /* margin-left: 100px; */
+  /* min-width: 250px; */
+}
+
 .burgernav {
   display: none;
 }
@@ -85,6 +90,7 @@ header {
 .hidden-nav {
   display: none;
 }
+
 /* --- MOBILE --- */
 @media only screen and (max-width: 700px) {
   header {
@@ -154,32 +160,20 @@ header {
     transition: 0.3s;
   }
 
+  /* ------  ---------- -----*/
+
   .sidebar {
+    transform: translateX(-400px);
     width: 40vw;
+    transition: 0.5s;
   }
-
-  .side-show {
-    display: flex;
-    transform: translateX(0);
-  }
-
-  /* ------  ---------- */
-
-  /* layout components */
-  /* .sidebar {
-    display: none;
-  } */
-
-  /* .sidebar div {
-    display: none;
-  } */
 
   .container {
     grid-template-columns: 1fr;
   }
 
   .main-container {
-    grid-column: 1/3;
+    grid-column: 1/2;
   }
 
   footer {
