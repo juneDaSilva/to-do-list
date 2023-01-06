@@ -9,12 +9,11 @@ footer {
   font-weight: 600;
   letter-spacing: 2px;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 }
 
 .footer-par {
-  margin-left: 5px;
   position: relative;
 }
 
@@ -30,8 +29,8 @@ footer {
 }
 
 .logos {
-  filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
-    contrast(83%);
+  /* filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
+    contrast(83%); */
   width: 22px;
   margin-left: 8px;
   transition: 0.3s;

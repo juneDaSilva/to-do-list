@@ -1,0 +1,192 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  /* color: var(--font); */
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  /* background-color: var(--main); */
+  background-color: rgb(254, 254, 40);
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  grid-template-rows: 50px 1fr 60px;
+  min-width: 355px;
+}
+
+header {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  /* background-color: var(--header); */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-left: 20px;
+}
+
+.bee-logo {
+  width: 25px;
+  margin-left: 10px;
+}
+
+.main-container {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  padding: 2rem 8rem;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 33, 0.941);
+  max-width: 80rem;
+}
+
+.burgernav {
+  display: none;
+}
+
+/* --- If screen too wide --- */
+@media only screen and (min-width: 1600px) {
+  .main-container {
+    padding: 2rem 13rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  /* --- Body Changes --- */
+  .container {
+    grid-template-columns: 170px 1fr;
+  }
+
+  .main-container {
+    padding: 2rem;
+  }
+
+  /* --- Sidebar Components --- */
+  .sidebar {
+    font-size: 13px;
+  }
+
+  /* --- Card Components --- */
+  .title {
+    font-size: 12px;
+  }
+
+  .due-date {
+    font-size: 10px;
+  }
+}
+
+.hidden-nav {
+  display: none;
+}
+/* --- MOBILE --- */
+@media only screen and (max-width: 700px) {
+  header {
+    display: none;
+  }
+
+  /* --- Nav Bar hidden by default unless on small screen */
+
+  .hidden-nav {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    padding-left: 2rem;
+  }
+
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 24px;
+    width: 30px;
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .burger-menu:hover {
+    cursor: pointer;
+  }
+
+  .fa-bars {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    border-radius: 1px;
+    transition: 0.3s;
+  }
+
+  /*  -------   -------   ----- 
+  *   Property transitions with 
+  *   burger.js callback function 
+  */
+
+  .burger-active .fa:last-child {
+    transition: 0.4s;
+    opacity: 0;
+  }
+
+  .burger-active .fa:first-child {
+    position: absolute;
+    left: 1px;
+    rotate: 45deg;
+    width: 17px;
+    transition: 0.3s;
+  }
+
+  .burger-active .fa:nth-child(2) {
+    position: absolute;
+    right: 1px;
+    rotate: -45deg;
+    width: 17px;
+    transition: 0.3s;
+  }
+
+  .sidebar {
+    width: 40vw;
+  }
+
+  .side-show {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  /* ------  ---------- */
+
+  /* layout components */
+  /* .sidebar {
+    display: none;
+  } */
+
+  /* .sidebar div {
+    display: none;
+  } */
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .main-container {
+    grid-column: 1/3;
+  }
+
+  footer {
+    grid-column: 1/3;
+  }
+
+  .footer-par {
+    margin-left: -5rem;
+  }
+}

@@ -1,5 +1,7 @@
 @import "./styles/cards.css";
 @import "./styles/footer.css";
+@import "./styles/base.css";
+@import "./styles/sidebar.css";
 
 :root {
   --main: #f8fafc;
@@ -7,42 +9,4 @@
   --header: #91b7ec;
   --border: #7a8faf;
   --font: #929395c0;
-}
-
-* {
-  font-family: "Montserrat", sans-serif;
-  /* color: var(--font); */
-}
-
-body {
-  /* background-color: var(--main); */
-  background-color: rgb(254, 254, 40);
-  margin: 0;
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  grid-template-rows: 50px 1fr 60px;
-}
-
-header {
-  grid-column: 1/3;
-  grid-row: 1/2;
-  background-color: var(--header);
-  border-bottom: 1px solid var(--border);
-}
-
-.sidebar {
-  grid-row: 2/4;
-  grid-column: 1/2;
-  /* background-color: var(--sidebar); */
-  background-color: rgba(255, 255, 33, 0.941);
-}
-
-.main-container {
-  grid-row: 2/3;
-  grid-column: 2/3;
-  padding: 2rem 8rem;
-  overflow-y: auto;
-  background-color: rgba(255, 255, 33, 0.941);
 }

@@ -1,10 +1,12 @@
-/* Outer card styling */
+/* --- Outer card styling ---*/
+
 .card {
   padding: 2px 10px;
+  color: white;
   /* background-color: var(--sidebar); */
   background-color: #000;
   display: flex;
-  color: white;
+
   align-items: center;
   margin-bottom: 8px;
   border-radius: 2px;
@@ -17,6 +19,7 @@
   background-color: transparent;
   border: 2px solid black;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .card div {
@@ -28,20 +31,21 @@
 /* --- Checkmark styling --- */
 .check {
   height: 15px;
-  width: 15px;
-  border: 2px solid var(--header);
+  min-width: 15px;
+  border: 2px solid var(--font);
   border-radius: 10px;
 }
 
 .check:hover {
-  border: 2px solid rgba(16, 86, 249, 0.87);
+  border: 2px solid rgb(0, 76, 255);
   cursor: pointer;
 }
 
 /* --- title --- */
 .title {
   flex: 1;
-  font-size: 18px;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 /* --- Right side tools block -- ** 
@@ -70,9 +74,12 @@
 }
 
 .details:hover {
-  filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
-    brightness(95%) contrast(95%);
+  /* filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
+    brightness(95%) contrast(95%); */
+  filter: invert(8%) sepia(100%) saturate(7266%) hue-rotate(251deg)
+    brightness(94%) contrast(141%);
   cursor: pointer;
+  scale: 0.93;
 }
 
 /* --- Due date --- */
@@ -82,7 +89,9 @@
 
 .due-date:hover {
   cursor: pointer;
-  color: var(--header);
+  /* color: var(--header); */
+  color: #0d00ff;
+  scale: 0.93;
 }
 
 /* --- Edit --- */
@@ -94,9 +103,12 @@
 }
 
 .edit:hover {
-  filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
-    brightness(95%) contrast(95%);
+  /* filter: invert(69%) sepia(52%) saturate(428%) hue-rotate(186deg)
+    brightness(95%) contrast(95%); */
+  filter: invert(8%) sepia(100%) saturate(7266%) hue-rotate(251deg)
+    brightness(94%) contrast(141%);
   cursor: pointer;
+  scale: 0.93;
 }
 
 /* --- Delete --- */
@@ -109,7 +121,10 @@
 
 .trash:hover {
   transition: 0.2s;
-  filter: invert(12%) sepia(49%) saturate(502%) hue-rotate(178deg)
-    brightness(98%) contrast(93%);
+  /* filter: invert(12%) sepia(49%) saturate(502%) hue-rotate(178deg)
+    brightness(98%) contrast(93%); */
+  filter: invert(8%) sepia(100%) saturate(7266%) hue-rotate(251deg)
+    brightness(94%) contrast(141%);
   cursor: pointer;
+  scale: 0.93;
 }
