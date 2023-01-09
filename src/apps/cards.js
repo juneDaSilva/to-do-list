@@ -1,6 +1,9 @@
 import { buildElement } from "./element-builder";
 
-export const buildCard = (title, due_date) => {
+export const buildCard = (todo) => {
+  const title = todo.title;
+  const due_date = todo.due_date;
+
   const card = buildElement("div", ["card"]);
   const check = buildElement("div", ["check"]);
   const title_box = buildElement("div", ["title"], title);
@@ -16,4 +19,8 @@ export const buildCard = (title, due_date) => {
   return card;
 };
 
-export const buildList = () => {};
+export const buildList = (parent, library) => {
+  for (const item in library) {
+    parent.append(buildCard(library[item]));
+  }
+};
