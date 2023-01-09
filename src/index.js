@@ -1,5 +1,6 @@
 import "./main.css";
 import { burgerListen } from "./apps/burger";
+export const content = document.getElementById("#content");
 
 // Make a factory/constructor/class module to make todo items
 // Create properties that these items will have
