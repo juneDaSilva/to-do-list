@@ -43,7 +43,7 @@
 /* --- title --- */
 .title {
   flex: 1;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 2px;
 }
 
@@ -66,6 +66,7 @@
 
 /* --- details --- */
 .details {
+  content: url("../images/details.svg");
   margin-right: 10px;
   width: 25px;
   filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
@@ -95,6 +96,7 @@
 
 /* --- Edit --- */
 .edit {
+  content: url("../images/edit.svg");
   margin-right: 13px;
   width: 22px;
   filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
@@ -112,6 +114,7 @@
 
 /* --- Delete --- */
 .trash {
+  content: url("../images/trash.svg");
   filter: invert(70%) sepia(7%) saturate(70%) hue-rotate(182deg) brightness(83%)
     contrast(83%);
   width: 18px;

@@ -8,15 +8,15 @@ const toggleSidebar = () => {
   sidebar.classList.toggle("side-show");
 };
 
-const toggleMain = () => {
-  const main = document.querySelector(".main");
-  main.classList.toggle("inactive-main");
-};
+// const toggleMain = () => {
+//   const main = document.querySelector(".main");
+//   main.classList.toggle("inactive-main");
+// };
 
 const toggleMenu = () => {
   toggleBurger();
   toggleSidebar();
-  toggleMain();
+  // toggleMain();
 };
 
 export const burgerListen = () => {

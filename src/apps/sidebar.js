@@ -8,7 +8,7 @@ export const buildSidebar = () => {
   const week = buildElement("div", ["week", "tab"], "-- WEEK");
   home_block.append(home, today, week);
 
-  const projects_block = buildElement("div"[("side-block", "projects-block")]);
+  const projects_block = buildElement("div", ["side-block", "projects-block"]);
   const projects = buildElement("div", ["projects"], "02. PROJECTS");
   const gym = buildElement("div", ["gym", "tab"], "-- GYM");
   const work = buildElement("div", ["work", "tab"], "-- WORK");

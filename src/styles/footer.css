@@ -19,11 +19,13 @@ footer {
 
 .ghlogo {
   position: absolute;
+  content: url("../images/ghlogo.svg");
   bottom: -2px;
 }
 
 .ytlogo {
   position: absolute;
+  content: url("../images/youtube.svg");
   left: 205px;
   bottom: -3px;
 }
