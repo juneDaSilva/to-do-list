@@ -16,4 +16,6 @@ export const buildSidebar = () => {
   projects_block.append(projects, gym, work, study);
 
   sidebar.append(home_block, projects_block);
+
+  return sidebar;
 };
