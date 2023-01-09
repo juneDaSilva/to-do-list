@@ -47,12 +47,8 @@ header {
 }
 
 .inactive-main {
-  /* margin-left: 100px; */
-  /* min-width: 250px; */
-}
-
-.burgernav {
-  display: none;
+  transition: 0.5s;
+  min-width: 300px;
 }
 
 /* --- If screen too wide --- */
@@ -87,18 +83,19 @@ header {
   }
 }
 
+/* -- mobile nav hidden default -- */
 .hidden-nav {
   display: none;
 }
 
 /* --- MOBILE --- */
 @media only screen and (max-width: 700px) {
+  /* Hide regular header */
   header {
     display: none;
   }
 
-  /* --- Nav Bar hidden by default unless on small screen */
-
+  /* --- Nav Bar hidden by default unless on small screen --- */
   .hidden-nav {
     grid-column: 1/3;
     grid-row: 1/2;
@@ -159,7 +156,6 @@ header {
     width: 17px;
     transition: 0.3s;
   }
-
   /* ------  ---------- -----*/
 
   .sidebar {

@@ -14,11 +14,15 @@ const toggleMain = () => {
   main.classList.toggle("inactive-main");
 };
 
+const toggleMenu = () => {
+  toggleBurger();
+  toggleSidebar();
+  toggleMain();
+};
+
 const burgerListen = () => {
   burger.addEventListener("click", () => {
-    toggleBurger();
-    toggleSidebar();
-    toggleMain();
+    toggleMenu();
   });
 };
 
