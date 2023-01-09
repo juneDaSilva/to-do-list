@@ -7,7 +7,7 @@ body {
   margin: 0;
 }
 
-#container {
+#content {
   /* background-color: var(--main); */
   background-color: rgb(254, 254, 40);
   margin: 0;
@@ -164,7 +164,7 @@ header {
     transition: 0.5s;
   }
 
-  #container {
+  #content {
     grid-template-columns: 1fr;
   }
 

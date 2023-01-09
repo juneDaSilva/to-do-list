@@ -1,6 +1,6 @@
 import "./main.css";
-import { burgerListen } from "./apps/burger";
-export const content = document.getElementById("#content");
+import { loadHome } from "./apps/page-loader";
+export const content = document.getElementById("content");
 
 // Make a factory/constructor/class module to make todo items
 // Create properties that these items will have
@@ -11,4 +11,4 @@ export const content = document.getElementById("#content");
 
 // Keep DOM related things seperate from application logic. maybe a mediator module?
 
-burgerListen();
+loadHome();
