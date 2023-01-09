@@ -4,5 +4,4 @@ import { burgerListen } from "./burger";
 
 export const loadHome = () => {
   content.append(buildHiddenNav(), buildHeader());
-  // burgerListen();
 };

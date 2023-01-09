@@ -33,6 +33,7 @@ header {
 }
 
 .bee-logo {
+  content: url(../images/bee-fill.svg);
   width: 25px;
   margin-left: 10px;
 }

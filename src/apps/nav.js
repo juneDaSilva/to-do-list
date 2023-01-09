@@ -3,6 +3,7 @@ import { buildElement } from "./element-builder";
 export const buildHiddenNav = () => {
   const nav = buildElement("nav", ["hidden-nav"]);
   const burger = buildElement("div", ["burger-menu"]);
+  burger.id = "burger-menu";
   const fa1 = buildElement("div", ["fa", "fa-bars"]);
   const fa2 = buildElement("div", ["fa", "fa-bars"]);
   const fa3 = buildElement("div", ["fa", "fa-bars"]);
