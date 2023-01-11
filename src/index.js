@@ -1,5 +1,7 @@
 import "./main.css";
 import { loadHome } from "./apps/page-loader";
+import { formListen } from "./apps/toggleForm";
+import { burgerListen } from "./apps/burger";
 export const content = document.getElementById("content");
 
 // Make a factory/constructor/class module to make todo items
@@ -11,4 +13,5 @@ export const content = document.getElementById("content");
 
 // Keep DOM related things seperate from application logic. maybe a mediator module?
 
-loadHome();
+burgerListen();
+formListen();

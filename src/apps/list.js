@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-class Item {
+class Todo {
   constructor(title, due_date) {
     this.title = title;
     this.due_date = due_date;
@@ -11,10 +11,10 @@ function addItem(item) {
   myLibrary.push(item);
 }
 
-const pictures = new Item("get pictures of spiderman!", "JAN 20th");
-const flowers = new Item("buy flowers", "JAN 20th");
+const todo1 = new Todo("return some videotapes", "JAN 20th");
+const todo2 = new Todo("invite coworker over", "JAN 20th");
 
-addItem(pictures);
-addItem(flowers);
+addItem(todo1);
+addItem(todo2);
 
 export { myLibrary };

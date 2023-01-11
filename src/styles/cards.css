@@ -6,7 +6,7 @@
   /* background-color: var(--sidebar); */
   background-color: #000;
   display: flex;
-
+  border: 2px solid transparent;
   align-items: center;
   margin-bottom: 8px;
   border-radius: 2px;

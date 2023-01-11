@@ -29,6 +29,112 @@
   cursor: pointer;
 }
 
+/* --- --- FORM --- --- */
+.add-new {
+  content: url("../images/add-fill.svg");
+  margin-bottom: 20px;
+  width: 20px;
+  transition: 0.2s;
+}
+
+.add-new:hover {
+  transition: 0.2s;
+  content: url("../images/add.svg");
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.form-container-folded {
+  height: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+/* activated with callback function */
+.form-unfolded {
+  transition: 0.6s ease-in-out;
+  height: 310px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  transition: 1s ease-in-out;
+}
+
+.form div {
+  transition: 0.5s;
+  display: flex;
+}
+
+/* only active once form unfolded */
+.form-unfolded .form div {
+  transition: 0.6s ease-in-out;
+  padding: 15px 0;
+}
+
+.inputBlock input {
+  flex: 1;
+  border: 2px solid rgb(142, 142, 142);
+  border-radius: 3px;
+  padding-left: 10px;
+  height: 20px;
+  background-color: transparent;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgb(0, 0, 0);
+  font-weight: 400;
+  transition: 0.2s;
+}
+
+.inputBlock input:focus {
+  border: 2px solid rgb(0, 0, 0);
+  outline: none;
+  transition: 0.2s;
+}
+
+textarea {
+  flex: 1;
+  border: 2px solid rgb(146, 146, 146);
+  border-radius: 3px;
+  padding-left: 10px;
+  background-color: transparent;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+  resize: none;
+}
+
+textarea:focus {
+  border: 2px solid rgb(114, 114, 114);
+  outline: none;
+  transition: 0.2s;
+}
+
+.submitButton {
+  padding: 5px 15px;
+  border: none;
+  border: 2px solid #000;
+  border-radius: 3px;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.submitButton:hover {
+  background-color: transparent;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.submitButton:active {
+  background-color: rgb(231, 231, 4);
+}
+
 .tab {
   margin-left: 20px;
 }
