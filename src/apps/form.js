@@ -1,29 +1,30 @@
+import { buildNewEntry, myLibrary } from "./list";
+import { buildList as displayUpdatedList } from "./cards";
 const addNew = document.querySelector(".add-new");
 const formContainer = document.querySelector(".form-container-folded");
 const form = document.querySelector(".form");
 
-// function to make form appear
+// Unfolds form via css
 function toggleForm() {
   formContainer.classList.toggle("form-unfolded");
 }
 
+// Listens for submit button click
 const listenSubmit = () => {
   form.addEventListener("click", (event) => {
+    const main = document.querySelector(".main");
     const title = document.getElementById("title");
     const details = document.getElementById("details");
     const due = document.getElementById("due_date");
 
-    // make new item
-
-    // add item
-
-    // build list function
+    // make new item and put it into list
+    buildNewEntry(title.value, details.value, due.value);
+    displayUpdatedList(main, myLibrary);
 
     // clear form
     title.value = "";
     details.value = "";
     due.value = "";
-    console.log("hi");
 
     event.preventDefault();
   });
@@ -33,8 +34,6 @@ const listenSubmit = () => {
 export const formListen = () => {
   addNew.addEventListener("click", () => {
     toggleForm();
-
     listenSubmit();
-    console.log("hello");
   });
 };

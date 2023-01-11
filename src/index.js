@@ -1,6 +1,6 @@
 import "./main.css";
 import { loadHome } from "./apps/page-loader";
-import { formListen } from "./apps/toggleForm";
+import { formListen } from "./apps/form";
 import { burgerListen } from "./apps/burger";
 export const content = document.getElementById("content");
 

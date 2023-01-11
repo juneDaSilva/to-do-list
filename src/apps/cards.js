@@ -20,6 +20,7 @@ export const buildCard = (todo) => {
 };
 
 export const buildList = (parent, library) => {
+  parent.innerHTML = "";
   for (const item in library) {
     parent.append(buildCard(library[item]));
   }
