@@ -1,8 +1,8 @@
 import { buildElement } from "./element-builder";
 
 export const buildCard = (todo) => {
-  const title = todo.title;
-  const due_date = todo.due_date;
+  const title = todo.getTitle();
+  const due_date = todo.getDueDate();
 
   const card = buildElement("div", ["card"]);
   const check = buildElement("div", ["check"]);

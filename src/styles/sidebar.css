@@ -90,6 +90,7 @@
 .inputBlock input:focus {
   border: 2px solid rgb(0, 0, 0);
   outline: none;
+  height: 24px;
   transition: 0.2s;
 }
 
@@ -107,7 +108,7 @@ textarea {
 }
 
 textarea:focus {
-  border: 2px solid rgb(114, 114, 114);
+  border: 2px solid rgb(0, 0, 0);
   outline: none;
   transition: 0.2s;
 }

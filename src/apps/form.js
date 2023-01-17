@@ -11,14 +11,14 @@ function toggleForm() {
 
 // Listens for submit button click
 const listenSubmit = () => {
-  form.addEventListener("click", (event) => {
+  form.addEventListener("submit", (event) => {
     const main = document.querySelector(".main");
     const title = document.getElementById("title");
     const details = document.getElementById("details");
     const due = document.getElementById("due_date");
 
     // make new item and put it into list
-    buildNewEntry(title.value, details.value, due.value);
+    buildNewEntry(title.value, due.value, details.value);
     displayUpdatedList(main, myLibrary);
 
     // clear form
