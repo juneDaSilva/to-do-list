@@ -24,16 +24,17 @@ class Todo {
   }
 }
 
-// add to library lol
+// ----------------------------
+// ------ LIST FUNCTIONS ------
+
+// add to library
 function addToLibrary(item) {
   myLibrary.push(item);
-  console.log(item);
 }
 
 // Todo maker
 const MakeNewTodo = (title, due, details) => {
   var todo = new Todo(title, due, details);
-
   return todo;
 };
 
