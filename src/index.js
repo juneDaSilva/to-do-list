@@ -13,5 +13,6 @@ export const content = document.getElementById("content");
 
 // Keep DOM related things seperate from application logic. maybe a mediator module?
 
-burgerListen();
-formListen();
+loadHome();
+// burgerListen();
+// formListen();

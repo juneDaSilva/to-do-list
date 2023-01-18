@@ -47,9 +47,13 @@ export const buildNewEntry = (title, due, details) => {
 const todo1 = new Todo(
   "return some videotapes",
   "JAN 20th",
-  "lets see Paul Allen's todo list"
+  "lets see Paul Allen's todo app"
 );
-const todo2 = new Todo("invite coworker over", "JAN 20th");
+const todo2 = new Todo(
+  "make dinner reservations",
+  "JAN 20th",
+  "make sure to tell everyone about it"
+);
 
 addToLibrary(todo1);
 addToLibrary(todo2);

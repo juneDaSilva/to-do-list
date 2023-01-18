@@ -31,6 +31,10 @@ export const buildList = (parent, library) => {
     // BUT ALSO to number each card in oder to be called later
     parent.append(buildCard(library[item], item));
   }
+  addCardListeners(parent, library);
+};
+
+export const addCardListeners = (parent, library) => {
   addTrashListener(parent, library);
   addDetailsListener(library);
   addEditListener(library);
@@ -49,7 +53,6 @@ const addEditListener = (library) => {
     });
   });
 };
-
 const addDetailsListener = (library) => {
   const details = document.querySelectorAll(".details");
 
@@ -58,6 +61,7 @@ const addDetailsListener = (library) => {
       for (const item in library) {
         if (item == e.target.value) {
           console.log(library[item].getDetails());
+          // TODO: function that opens pop-up with details
         }
       }
     });

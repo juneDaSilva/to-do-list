@@ -1,16 +1,17 @@
 import { buildNewEntry, myLibrary } from "./list";
 import { buildList as displayUpdatedList } from "./cards";
-const addNew = document.querySelector(".add-new");
-const formContainer = document.querySelector(".form-container-folded");
-const form = document.querySelector(".form");
 
 // Unfolds form via css
 function toggleForm() {
+  const formContainer = document.querySelector(".form-container-folded");
+
   formContainer.classList.toggle("form-unfolded");
 }
 
 // Listens for submit button click
 const listenSubmit = () => {
+  const form = document.querySelector(".form");
+
   form.addEventListener("submit", (event) => {
     const main = document.querySelector(".main");
     const title = document.getElementById("title");
@@ -32,6 +33,8 @@ const listenSubmit = () => {
 
 // make toggleForm and toggleArrow activate on button click
 export const formListen = () => {
+  const addNew = document.querySelector(".add-new");
+
   addNew.addEventListener("click", () => {
     toggleForm();
     listenSubmit();
