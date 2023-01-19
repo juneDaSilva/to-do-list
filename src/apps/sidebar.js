@@ -63,6 +63,7 @@ const buildForm = () => {
   date.type = "date";
   date.id = "due_date";
   date.name = "due_date";
+  date.required = "true";
   dateBlock.append(date);
 
   const submitBlock = buildElement("div", ["submitBlock", "inputBlock"]);

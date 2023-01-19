@@ -17,6 +17,37 @@
 
   <body>
     <div id="content">
+      <div class="modal active" id="modal">
+        <div class="modal-header">
+          <div class="details-title">Title</div>
+          <img data-close-button class="close-button"></img>
+        </div>
+        <div class="modal-body">
+          <div class="details-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sunt earum
+            dolores accusantium dignissimos aspernatur placeat perspiciatis voluptatum officia pariatur suscipit ab
+            saepe beatae quo, nobis nostrum fuga velit excepturi rerum illum cupiditate recusandae in harum. Cumque
+            consectetur, sint necessitatibus dolorem cum sapiente vel tempore amet! Dolore distinctio facere,
+            perferendis laudantium cum vitae quae quisquam adipisci. Suscipit, quas molestias tempore at cumque
+            praesentium, dolores explicabo blanditiis deleniti cupiditate iusto sit eos minima unde nostrum? Laborum
+            reiciendis necessitatibus recusandae modi voluptate, maiores maxime ullam consectetur architecto vero
+            facilis porro fuga eum aliquid corrupti. Sunt corporis ratione laboriosam nulla, beatae qui nostrum?</div>
+          <div class="date-project-row">
+            <div class="details-bundle">
+              <div class="details-label">Due:</div>
+              <div class="details-content due">january 18th</div>
+            </div>
+            <div class="details-bundle">
+              <div class="details-label">Project:</div>
+              <div class="details-content project">gym</div>
+            </div>
+          </div>
+          <div class="details-bundle">
+            <div class="details-label">Priority:</div>
+            <div class="details-content priority">high</div>
+          </div>
+        </div>
+      </div>
+      <div id="overlay" class="active"></div>
       <nav class="hidden-nav">
         <div class="burger-menu">
           <div class="fa fa-bars"></div>
@@ -42,14 +73,14 @@
               <textarea rows="4" type="text" id="details" name="details" placeholder="details"></textarea>
             </div>
             <div class="dateBlock inputBlock textBlock">
-              <input type="date" id="due_date" name="due_date" placeholder="due date">
+              <input type="date" id="due_date" name="due_date" placeholder="due date" required>
             </div>
             <div class="submitBlock inputBlock">
               <button type="#" class="submitButton">add note</button>
             </div>
           </form>
         </div>
-
+        <button data-modal-target="#modal">Open Modal</button>
         <div class="side-block home-block">
           <div class="home">01. HOME</div>
           <div class="today tab">-- TODAY</div>

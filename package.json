@@ -27,6 +27,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "date-fns": "^2.29.3",
     "html-loader": "^4.2.0",
     "save-dev": "^0.0.1-security"
   }

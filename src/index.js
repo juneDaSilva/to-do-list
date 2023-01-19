@@ -3,16 +3,54 @@ import { loadHome } from "./apps/page-loader";
 import { formListen } from "./apps/form";
 import { burgerListen } from "./apps/burger";
 export const content = document.getElementById("content");
+const openModalButtons = document.querySelectorAll("[data-modal-target]");
+const closeModalButtons = document.querySelectorAll("[data-close-button]");
+const overlay = document.getElementById("overlay");
 
-// Make a factory/constructor/class module to make todo items
-// Create properties that these items will have
+// openModalButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const modal = document.querySelector(button.dataset.modalTarget);
+//     openModal(modal);
+//   });
+// });
 
-// Make categories? for sublists of todos
-// Default category has everything
-// should be able to create new category and choose which one item goes into
+// overlay.addEventListener("click", () => {
+//   const modals = document.querySelectorAll(".modal.active");
+//   modals.forEach((modal) => {
+//     closeModal(modal);
+//   });
+// });
 
-// Keep DOM related things seperate from application logic. maybe a mediator module?
+// closeModalButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const modal = button.closest(".modal");
+//     closeModal(modal);
+//   });
+// });
 
-loadHome();
-// burgerListen();
-// formListen();
+// function openModal(modal) {
+//   if (modal == null) return;
+//   modal.classList.add("active");
+//   overlay.classList.add("active");
+// }
+
+// function closeModal(modal) {
+//   if (modal == null) return;
+//   modal.classList.remove("active");
+//   overlay.classList.remove("active");
+// }
+
+// TODO
+// edit date-time format -- DONE --
+// Make popup for description viewing
+// make popup for details editing
+// make different builder functions for today/week
+// group todo items into projects
+// make listBuilder accoding to project groups
+// add priority property to todo items
+
+// loadHome();
+burgerListen();
+formListen();
+
+//today's date

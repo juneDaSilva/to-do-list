@@ -1,7 +1,7 @@
 .sidebar {
   grid-row: 2/4;
   grid-column: 1/2;
-  background-color: rgb(255, 255, 33);
+  background-color: var(--main);
   display: flex;
   flex-direction: column;
   align-items: start;

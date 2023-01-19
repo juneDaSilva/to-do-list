@@ -7,7 +7,6 @@ import { burgerListen } from "./burger";
 import { formListen } from "./form.js";
 import { addCardListeners } from "./cards.js";
 import { myLibrary } from "./list.js";
-const main = document.querySelector(".main");
 
 export const loadHome = () => {
   content.append(
@@ -17,6 +16,7 @@ export const loadHome = () => {
     buildMainContainer(),
     buildFooter()
   );
+  const main = document.querySelector(".main");
   burgerListen();
   formListen();
   addCardListeners(main, myLibrary);

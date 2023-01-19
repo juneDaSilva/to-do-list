@@ -1,8 +1,11 @@
 import { buildElement } from "./element-builder";
+import { format } from "date-fns";
 
 const buildCard = (todo, iteration) => {
   const title = todo.getTitle();
-  const due_date = todo.getDueDate();
+  // turn date into slash format because of weird js date bug that subtracts a day when dashes are used
+  const rawDate = new Date(todo.getDueDate().replace(/-/g, "/"));
+  const formattedDate = format(rawDate, "MMM do"); // display in Month/day format
 
   const card = buildElement("div", ["card"]);
   card.value = iteration;
@@ -12,7 +15,7 @@ const buildCard = (todo, iteration) => {
   const tools = buildElement("div", ["tools"]);
   const details = buildElement("img", ["details"]);
   details.value = iteration;
-  const due_date_box = buildElement("div", ["due-date"], due_date);
+  const due_date_box = buildElement("div", ["due-date"], formattedDate);
   const edit = buildElement("img", ["edit"]);
   edit.value = iteration;
   const trash = buildElement("img", ["trash"]);
@@ -53,6 +56,7 @@ const addEditListener = (library) => {
     });
   });
 };
+
 const addDetailsListener = (library) => {
   const details = document.querySelectorAll(".details");
 
@@ -75,7 +79,6 @@ const addTrashListener = (parent, library) => {
     bin.addEventListener("click", (e) => {
       for (const item in library) {
         if (item == e.target.value) {
-          console.log(library[item]);
           library.splice(item, 1);
           buildList(parent, library);
         }

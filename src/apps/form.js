@@ -1,6 +1,5 @@
 import { buildNewEntry, myLibrary } from "./list";
 import { buildList as displayUpdatedList } from "./cards";
-
 // Unfolds form via css
 function toggleForm() {
   const formContainer = document.querySelector(".form-container-folded");

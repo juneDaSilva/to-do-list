@@ -38,7 +38,7 @@ const MakeNewTodo = (title, due, details) => {
   return todo;
 };
 
-// Makes new entry and pushes it to library in one go
+// bundles functions to make new entry and to push it to library in one
 export const buildNewEntry = (title, due, details) => {
   var new_entry = MakeNewTodo(title, due, details);
   addToLibrary(new_entry);
@@ -46,13 +46,13 @@ export const buildNewEntry = (title, due, details) => {
 
 const todo1 = new Todo(
   "return some videotapes",
-  "JAN 20th",
+  "2023/01/02",
   "lets see Paul Allen's todo app"
 );
 const todo2 = new Todo(
   "make dinner reservations",
-  "JAN 20th",
-  "make sure to tell everyone about it"
+  "2023/01/02",
+  "make sure everyone knows"
 );
 
 addToLibrary(todo1);
