@@ -15,6 +15,7 @@ const buildCard = (todo, iteration) => {
   const tools = buildElement("div", ["tools"]);
   const details = buildElement("img", ["details"]);
   details.value = iteration;
+  details.setAttribute("data-modal-target", "#modal");
   const due_date_box = buildElement("div", ["due-date"], formattedDate);
   const edit = buildElement("img", ["edit"]);
   edit.value = iteration;
@@ -39,7 +40,7 @@ export const buildList = (parent, library) => {
 
 export const addCardListeners = (parent, library) => {
   addTrashListener(parent, library);
-  addDetailsListener(library);
+  addDescriptionListener();
   addEditListener(library);
 };
 
@@ -86,3 +87,46 @@ const addTrashListener = (parent, library) => {
     });
   });
 };
+
+const addDescriptionListener = () => {
+  const openModalButtons = document.querySelectorAll("[data-modal-target]");
+
+  openModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(button.dataset.modalTarget);
+      openModal(modal);
+    });
+  });
+};
+
+function openModal(modal) {
+  if (modal == null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
+  addCloseListener();
+}
+
+const addCloseListener = () => {
+  const closeModalButtons = document.querySelectorAll("[data-close-button]");
+  const overlay = document.getElementById("overlay");
+
+  overlay.addEventListener("click", () => {
+    const modals = document.querySelectorAll(".modal.active");
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  });
+
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      closeModal(modal);
+    });
+  });
+};
+
+function closeModal(modal) {
+  if (modal == null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
