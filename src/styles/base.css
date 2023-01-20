@@ -139,6 +139,9 @@ header {
 
 .details-content {
   letter-spacing: 1px;
+  font-size: 13px;
+  display: flex;
+  align-items: end;
 }
 
 #overlay {

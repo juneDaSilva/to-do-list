@@ -17,8 +17,8 @@ export const content = document.getElementById("content");
 // add priority property to todo items
 
 loadHome();
-burgerListen();
-formListen();
+// burgerListen();
+// formListen();
 // addCardListeners(main, myLibrary);
 
 //today's date

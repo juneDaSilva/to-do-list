@@ -1,5 +1,7 @@
 import { buildElement } from "./element-builder";
+import { myLibrary } from "./list";
 
+// --------- --------- DETAILS MODAL --------- ----------
 export const buildDetailsModal = () => {
   const mod_container = buildElement("div", ["modal-container"]);
   const modal = buildElement("div", ["modal"]);
@@ -47,4 +49,96 @@ export const buildDetailsModal = () => {
   mod_container.append(modal, overlay);
 
   return mod_container;
+};
+
+// --- details modal functions ---
+
+export const addInfoListener = () => {
+  // SELECT ALL THE DETAILS BUTTONS THAT POINT TO THE MODAL ID
+  const openModalButtons = document.querySelectorAll("[data-modal-target]");
+
+  // ADD A LISTENER ON EACH ONE OF THEM THAT OPENS THE MODAL
+  openModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const todo_num = button.value;
+      console.log(todo_num);
+      const modal = document.querySelector(button.dataset.modalTarget);
+      openModal(modal, todo_num); // this function also starts the closer listeners
+    });
+  });
+};
+
+function openModal(modal, todo_num) {
+  if (modal == null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
+
+  populateInfoModal(todo_num);
+
+  // add close listeners AFTER overlay has been loaded above or else you get an error
+  addCloseListeners();
+}
+
+const addCloseListeners = () => {
+  //  SELECT CLOSE BUTTON AND OVERLAY TO ADD A LISTENER TO
+  const closeModalButtons = document.querySelectorAll("[data-close-button]");
+  const overlay = document.getElementById("overlay");
+
+  // ADD LISTENER TO OVERLAY THAT CLOSES MODAL
+  overlay.addEventListener("click", () => {
+    const modals = document.querySelectorAll(".modal.active");
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  });
+
+  // ADD LISTENER TO CLOSE BUTTON THAT CLOSES MODAL
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      closeModal(modal);
+    });
+  });
+};
+
+// ACTUAL CLOSE MODAL FUNCTION
+function closeModal(modal) {
+  if (modal == null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+const populateInfoModal = (todo_num) => {
+  const todo = myLibrary[todo_num];
+  const title = document.querySelector(".details-title");
+  const description = document.querySelector(".details-description");
+  const due = document.querySelector(".details-content.due");
+  const project = document.querySelector(".details-content.project");
+  const priority = document.querySelector(".details-content.priority");
+
+  title.innerHTML = todo.getTitle();
+  description.innerHTML = todo.getDescription();
+  due.innerHTML = todo.getDueDate();
+  project.innerHTML = todo.getProject();
+  priority.innerHTML = todo.getPriority();
+};
+
+// function for writing html
+
+// ----------- END DETAILS MODAL FUNCTIONS -------------
+
+//  one way to grab information from library
+const addDetailsListener = (library) => {
+  const details = document.querySelectorAll(".details");
+
+  details.forEach((detail) => {
+    detail.addEventListener("click", (e) => {
+      for (const item in library) {
+        if (item == e.target.value) {
+          console.log(library[item].getDetails());
+          // TODO: function that opens pop-up with details
+        }
+      }
+    });
+  });
 };

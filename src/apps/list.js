@@ -2,13 +2,23 @@ const myLibrary = [];
 
 class Todo {
   #title;
-  #details;
+  #description;
   #due_date;
+  #project;
+  #priority;
 
-  constructor(title, due_date, details) {
+  constructor(
+    title,
+    due_date,
+    description = "",
+    project = " ",
+    priority = " "
+  ) {
     this.#title = title;
     this.#due_date = due_date;
-    this.#details = details;
+    this.#description = description;
+    this.#project = project;
+    this.#priority = priority;
   }
 
   getTitle() {
@@ -19,8 +29,16 @@ class Todo {
     return this.#due_date;
   }
 
-  getDetails() {
-    return this.#details;
+  getDescription() {
+    return this.#description;
+  }
+
+  getProject() {
+    return this.#project;
+  }
+
+  getPriority() {
+    return this.#priority;
   }
 }
 

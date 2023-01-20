@@ -1,5 +1,6 @@
 import { buildElement } from "./element-builder";
 import { format } from "date-fns";
+import { addInfoListener } from "./modals";
 
 const buildCard = (todo, iteration) => {
   const title = todo.getTitle();
@@ -40,7 +41,7 @@ export const buildList = (parent, library) => {
 
 export const addCardListeners = (parent, library) => {
   addTrashListener(parent, library);
-  addDescriptionListener();
+  addInfoListener();
   addEditListener(library);
 };
 
@@ -52,21 +53,6 @@ const addEditListener = (library) => {
       for (const item in library) {
         if (item == e.target.value) {
           console.log(library[item]);
-        }
-      }
-    });
-  });
-};
-
-const addDetailsListener = (library) => {
-  const details = document.querySelectorAll(".details");
-
-  details.forEach((detail) => {
-    detail.addEventListener("click", (e) => {
-      for (const item in library) {
-        if (item == e.target.value) {
-          console.log(library[item].getDetails());
-          // TODO: function that opens pop-up with details
         }
       }
     });
@@ -87,46 +73,3 @@ const addTrashListener = (parent, library) => {
     });
   });
 };
-
-const addDescriptionListener = () => {
-  const openModalButtons = document.querySelectorAll("[data-modal-target]");
-
-  openModalButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const modal = document.querySelector(button.dataset.modalTarget);
-      openModal(modal);
-    });
-  });
-};
-
-function openModal(modal) {
-  if (modal == null) return;
-  modal.classList.add("active");
-  overlay.classList.add("active");
-  addCloseListener();
-}
-
-const addCloseListener = () => {
-  const closeModalButtons = document.querySelectorAll("[data-close-button]");
-  const overlay = document.getElementById("overlay");
-
-  overlay.addEventListener("click", () => {
-    const modals = document.querySelectorAll(".modal.active");
-    modals.forEach((modal) => {
-      closeModal(modal);
-    });
-  });
-
-  closeModalButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const modal = button.closest(".modal");
-      closeModal(modal);
-    });
-  });
-};
-
-function closeModal(modal) {
-  if (modal == null) return;
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-}
