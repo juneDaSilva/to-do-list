@@ -56,13 +56,13 @@
   height: 310px;
 }
 
-.form {
+.sideform {
   display: flex;
   flex-direction: column;
   transition: 1s ease-in-out;
 }
 
-.form div {
+.sideform div {
   transition: 0.5s;
   display: flex;
 }

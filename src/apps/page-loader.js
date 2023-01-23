@@ -7,11 +7,12 @@ import { burgerListen } from "./burger";
 import { formListen } from "./form.js";
 import { addCardListeners } from "./cards.js";
 import { myLibrary } from "./list.js";
-import { buildDetailsModal } from "./modals.js";
+import { buildDetailsModal, buildEditModal } from "./modals.js";
 
 export const loadHome = () => {
   content.append(
     buildDetailsModal(),
+    buildEditModal(),
     buildHiddenNav(),
     buildHeader(),
     buildSidebar(),

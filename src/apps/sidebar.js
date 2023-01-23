@@ -24,7 +24,7 @@ export const buildSidebar = () => {
 
 const buildForm = () => {
   const formContainer = buildElement("div", ["form-container-folded"]);
-  const form = buildElement("form", ["form"]);
+  const form = buildElement("form", ["sideform"]);
   form.action = "#";
   form.method = "post";
 

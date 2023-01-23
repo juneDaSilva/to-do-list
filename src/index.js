@@ -15,6 +15,7 @@ export const content = document.getElementById("content");
 // group todo items into projects
 // make listBuilder accoding to project groups
 // add priority property to todo items
+// change "details" labels to "info"
 
 loadHome();
 // burgerListen();

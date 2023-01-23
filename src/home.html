@@ -19,6 +19,43 @@
     <div id="content">
 
       <div class="modal-container">
+        <form class="modal active form" id="modal-form" method="post">
+          <div class="modal-header">
+            <input type="text" id="title" name="title" class="edit-title" maxlength="27" placeholder="Title"></input>
+            <img data-close-button class="close-button"></img>
+          </div>
+          <div class="modal-body">
+            <textarea class="edit-description" type="text" id="description" name="description"
+              placeholder="Description"></textarea>
+            <div class="details-bundle">
+              <div class="edit-label">Due:</div>
+              <input class="details-content due" type="date" id="due_date" name="due_date" value="2023-01-02"></input>
+            </div>
+            <div class="details-bundle">
+              <div class="edit-label">Project:</div>
+              <select class="details-content project" id="project" name="project">
+                <option>gym</option>
+                <option selected>work</option>
+                <option>study</option>
+              </select>
+            </div>
+            <div class="date-project-row">
+              <div class="details-bundle">
+                <div class="edit-label">Priority:</div>
+                <select class="details-content priority" name="priority" id="priority">
+                  <option>low</option>
+                  <option selected>medium</option>
+                  <option>high</option>
+                </select>
+              </div>
+              <button type="#" class="submitButton editButton">submit edit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+      <div class="modal-container">
         <div class="modal" id="modal">
           <div class="modal-header">
             <div class="details-title">Title</div>
@@ -43,7 +80,7 @@
           </div>
         </div>
       </div>
-      <div id="overlay"></div>
+      <div id="overlay" class="active"></div>
 
 
       <nav class="hidden-nav">
@@ -71,7 +108,7 @@
               <textarea rows="4" type="text" id="details" name="details" placeholder="details"></textarea>
             </div>
             <div class="dateBlock inputBlock textBlock">
-              <input type="date" id="due_date" name="due_date" placeholder="due date" required>
+              <input type="date" id="due_date" name="due_date" required>
             </div>
             <div class="submitBlock inputBlock">
               <button type="#" class="submitButton">add note</button>

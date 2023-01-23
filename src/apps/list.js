@@ -64,13 +64,17 @@ export const buildNewEntry = (title, due, details) => {
 
 const todo1 = new Todo(
   "return some videotapes",
-  "2023/01/02",
-  "lets see Paul Allen's todo app"
+  "2023-01-02",
+  "lets see Paul Allen's todo app",
+  "work",
+  "low"
 );
 const todo2 = new Todo(
   "make dinner reservations",
-  "2023/01/02",
-  "make sure everyone knows"
+  "2023-02-23",
+  "make sure everyone knows",
+  "study",
+  "medium"
 );
 
 addToLibrary(todo1);

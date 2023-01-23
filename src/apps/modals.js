@@ -51,19 +51,106 @@ export const buildDetailsModal = () => {
   return mod_container;
 };
 
-// --- details modal functions ---
+// -------- ------ EDIT MODAL ----- -----------
+export const buildEditModal = () => {
+  const mod_container = buildElement("div", ["modal-container"]);
+  const modal = buildElement("form", ["modal", "form"]);
+  modal.id = "modal-form";
+  modal.method = "post";
 
-export const addInfoListener = () => {
+  const header = buildElement("div", ["modal-header"]);
+  const title = buildElement("input", ["edit-title"]);
+  title.type = "text";
+  title.id = "title";
+  title.name = "title";
+  title.maxLength = "27";
+  title.placeholder = "Title";
+  const cls_button = buildElement("img", ["close-button"]);
+  cls_button.setAttribute("data-close-button", "");
+  header.append(title, cls_button);
+
+  const body = buildElement("div", ["modal-body"]);
+
+  const description = buildElement("textarea", ["edit-description"]);
+  description.id = "description";
+  description.name = "description";
+  description.placeholder = "Description";
+
+  const bund1 = buildElement("div", ["details-bundle"]);
+  const due = buildElement("div", ["edit-label"], "Due:");
+  const due_cont = buildElement("input", [
+    "details-content",
+    "due",
+    "edit-due",
+  ]);
+  due_cont.type = "date";
+  due_cont.id = "due_date";
+  due_cont.name = "due_date";
+  due_cont.value = "2023-01-02";
+  bund1.append(due, due_cont);
+
+  const bund2 = buildElement("div", ["details-bundle"]);
+  const proj = buildElement("div", ["edit-label"], "Project:");
+  const proj_cont = buildElement("select", ["details-content", "project"]);
+  proj_cont.id = "project";
+  proj_cont.name = "project";
+  const proj1 = buildElement("option", ["proj-option"], "gym");
+  proj1.selected = true;
+  const proj2 = buildElement("option", ["proj-option"], "work");
+  const proj3 = buildElement("option", ["proj-option"], "study");
+  proj_cont.append(proj1, proj2, proj3);
+  bund2.append(proj, proj_cont);
+
+  const row = buildElement("div", ["date-project-row"]);
+  const bund3 = buildElement("div", ["details-bundle"]);
+  const prio = buildElement("div", ["edit-label"], "Priority:");
+  const prio_cont = buildElement("select", ["details-content", "priority"]);
+  prio.id = "priority";
+  prio_cont.name = "priority";
+  const prio1 = buildElement("option", ["prio-option"], "low");
+  prio1.selected = true;
+  const prio2 = buildElement("option", ["prio-option"], "medium");
+  const prio3 = buildElement("option", ["prio-option"], "high");
+  prio_cont.append(prio1, prio2, prio3);
+  bund3.append(prio, prio_cont);
+
+  const button = buildElement(
+    "button",
+    ["submitButton", "editButton"],
+    "submit edit"
+  );
+  button.type = "#";
+
+  row.append(bund3, button);
+
+  const overlay = buildElement("div");
+  overlay.id = "edit-overlay";
+
+  body.append(description, bund1, bund2, row);
+  modal.append(header, body);
+  mod_container.append(modal, overlay);
+
+  return mod_container;
+};
+
+// ---------- --- Modal functions --- --------------//
+
+export const addModalListener = () => {
   // SELECT ALL THE DETAILS BUTTONS THAT POINT TO THE MODAL ID
-  const openModalButtons = document.querySelectorAll("[data-modal-target]");
+  const InfoModalButtons = document.querySelectorAll("[data-modal-target]");
+  const EditModalButtons = document.querySelectorAll("[data-edit-target]");
 
-  // ADD A LISTENER ON EACH ONE OF THEM THAT OPENS THE MODAL
-  openModalButtons.forEach((button) => {
+  InfoModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const todo_num = button.value;
-      console.log(todo_num);
       const modal = document.querySelector(button.dataset.modalTarget);
-      openModal(modal, todo_num); // this function also starts the closer listeners
+      openModal(modal, button.value); // this function also starts the closer listeners
+    });
+  });
+
+  EditModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(button.dataset.editTarget);
+      openModal(modal, button.value);
     });
   });
 };
@@ -73,18 +160,20 @@ function openModal(modal, todo_num) {
   modal.classList.add("active");
   overlay.classList.add("active");
 
-  populateInfoModal(todo_num);
+  if (modal.id == "modal") {
+    populateInfoModal(todo_num);
+  } else if (modal.id == "modal-form") {
+    populateEditModal(todo_num);
+  }
 
-  // add close listeners AFTER overlay has been loaded above or else you get an error
-  addCloseListeners();
+  addCloseListeners(); // add close listeners AFTER overlay has been loaded above or else you get an error
 }
 
 const addCloseListeners = () => {
-  //  SELECT CLOSE BUTTON AND OVERLAY TO ADD A LISTENER TO
   const closeModalButtons = document.querySelectorAll("[data-close-button]");
   const overlay = document.getElementById("overlay");
 
-  // ADD LISTENER TO OVERLAY THAT CLOSES MODAL
+  // Add listener to overlay
   overlay.addEventListener("click", () => {
     const modals = document.querySelectorAll(".modal.active");
     modals.forEach((modal) => {
@@ -92,7 +181,7 @@ const addCloseListeners = () => {
     });
   });
 
-  // ADD LISTENER TO CLOSE BUTTON THAT CLOSES MODAL
+  // Add listener to close button
   closeModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = button.closest(".modal");
@@ -101,7 +190,7 @@ const addCloseListeners = () => {
   });
 };
 
-// ACTUAL CLOSE MODAL FUNCTION
+// Close modal by removing "active" class
 function closeModal(modal) {
   if (modal == null) return;
   modal.classList.remove("active");
@@ -110,35 +199,34 @@ function closeModal(modal) {
 
 const populateInfoModal = (todo_num) => {
   const todo = myLibrary[todo_num];
-  const title = document.querySelector(".details-title");
-  const description = document.querySelector(".details-description");
-  const due = document.querySelector(".details-content.due");
-  const project = document.querySelector(".details-content.project");
-  const priority = document.querySelector(".details-content.priority");
-
-  title.innerHTML = todo.getTitle();
-  description.innerHTML = todo.getDescription();
-  due.innerHTML = todo.getDueDate();
-  project.innerHTML = todo.getProject();
-  priority.innerHTML = todo.getPriority();
+  document.querySelector(".details-title").innerHTML = todo.getTitle();
+  document.querySelector(".details-description").innerHTML =
+    todo.getDescription();
+  document.querySelector(".details-content.due").innerHTML = todo.getDueDate();
+  document.querySelector(".details-content.project").innerHTML =
+    todo.getProject();
+  document.querySelector(".details-content.priority").innerHTML =
+    todo.getPriority();
 };
 
-// function for writing html
+const populateEditModal = (todo_num) => {
+  const todo = myLibrary[todo_num];
+  document.querySelector(".edit-title").placeholder = todo.getTitle();
+  document.querySelector(".edit-description").placeholder =
+    todo.getDescription();
+  document.querySelector(".edit-due").value = todo.getDueDate();
 
-// ----------- END DETAILS MODAL FUNCTIONS -------------
+  const projOptions = document.querySelectorAll(".proj-option");
+  projOptions.forEach((proj) => {
+    if (proj.innerHTML == todo.getProject()) {
+      proj.selected = true;
+    }
+  });
 
-//  one way to grab information from library
-const addDetailsListener = (library) => {
-  const details = document.querySelectorAll(".details");
-
-  details.forEach((detail) => {
-    detail.addEventListener("click", (e) => {
-      for (const item in library) {
-        if (item == e.target.value) {
-          console.log(library[item].getDetails());
-          // TODO: function that opens pop-up with details
-        }
-      }
-    });
+  const prioOptions = document.querySelectorAll(".prio-option");
+  prioOptions.forEach((prio) => {
+    if (prio.innerHTML == todo.getPriority()) {
+      prio.selected = true;
+    }
   });
 };

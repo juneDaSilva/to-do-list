@@ -1,6 +1,6 @@
 import { buildElement } from "./element-builder";
 import { format } from "date-fns";
-import { addInfoListener } from "./modals";
+import { addModalListener } from "./modals";
 
 const buildCard = (todo, iteration) => {
   const title = todo.getTitle();
@@ -20,6 +20,7 @@ const buildCard = (todo, iteration) => {
   const due_date_box = buildElement("div", ["due-date"], formattedDate);
   const edit = buildElement("img", ["edit"]);
   edit.value = iteration;
+  edit.setAttribute("data-edit-target", "#modal-form");
   const trash = buildElement("img", ["trash"]);
   trash.value = iteration;
 
@@ -36,16 +37,15 @@ export const buildList = (parent, library) => {
     // BUT ALSO to number each card in oder to be called later
     parent.append(buildCard(library[item], item));
   }
-  addCardListeners(parent, library);
+  // addCardListeners(parent, library);
 };
 
 export const addCardListeners = (parent, library) => {
   addTrashListener(parent, library);
-  addInfoListener();
-  addEditListener(library);
+  addModalListener();
 };
 
-const addEditListener = (library) => {
+const addListener = (library) => {
   const edits = document.querySelectorAll(".edit");
 
   edits.forEach((edit) => {
