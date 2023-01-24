@@ -54,6 +54,7 @@ const addTrashListener = (parent, library) => {
         if (item == e.target.value) {
           library.splice(item, 1);
           buildList(parent, library);
+          addCardListeners(parent, library);
         }
       }
     });

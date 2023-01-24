@@ -237,7 +237,6 @@ const populateEditModal = (todo_num) => {
 };
 
 const listenSubmit = (todo_num) => {
-  console.log(`number passed: ${todo_num}`);
   const form = document.querySelector("#modal-form");
 
   form.addEventListener("submit", (event) => {
@@ -259,6 +258,7 @@ const listenSubmit = (todo_num) => {
       prio.value
     );
 
+    // Grab the modal that should be closed and run the close function on it
     const modal = form.closest(".modal");
     closeModal(modal);
 

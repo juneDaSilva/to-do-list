@@ -7,6 +7,11 @@ class Todo {
   #project;
   #priority;
 
+  static gym = [];
+  static work = [];
+  static study = [];
+  static projects = ["gym", "work", "study"];
+
   constructor(
     title,
     due_date,
@@ -19,6 +24,14 @@ class Todo {
     this.#description = description;
     this.#project = project;
     this.#priority = priority;
+
+    // Push each new todo into corresponding project array
+    for (const proj in Todo.projects) {
+      if (Todo.projects[proj] == project) {
+        Todo[project].push(this);
+        console.log(Todo[project]);
+      }
+    }
   }
 
   getTitle() {
@@ -77,25 +90,16 @@ const MakeNewTodo = (title, due, details, project, priority) => {
 };
 
 // bundles functions to make new entry and to push it to library in one
-export const buildNewEntry = (title, due, details, project, priority) => {
+export const buildNewEntry = (
+  title = " ",
+  due = "2023-02-01", // hardcoded just for example items purposes
+  details = " ",
+  project = " ",
+  priority = " "
+) => {
   var new_entry = MakeNewTodo(title, due, details, project, priority);
   addToLibrary(new_entry);
 };
-
-const todo1 = new Todo(
-  "return some videotapes",
-  "2023-01-02",
-  "lets see Paul Allen's todo app",
-  "work",
-  "low"
-);
-const todo2 = new Todo(
-  "make dinner reservations",
-  "2023-02-23",
-  "make sure everyone knows",
-  "study",
-  "medium"
-);
 
 // Takes existing todo iteration and updates property values
 export const UpdateTodoItem = (
@@ -108,7 +112,6 @@ export const UpdateTodoItem = (
 ) => {
   if (todo_num == null) return;
   const todo = myLibrary[todo_num];
-  console.log(`-----${priority}`);
   todo.setTitle(title);
   todo.setDescription(description);
   todo.setDueDate(due);
@@ -116,7 +119,47 @@ export const UpdateTodoItem = (
   todo.setPriority(priority);
 };
 
-addToLibrary(todo1);
-addToLibrary(todo2);
+// Default todo items for testing
+
+buildNewEntry(
+  "return some videotapes",
+  "2023-01-02",
+  "lets see Paul Allen's todo app",
+  "work",
+  "low"
+);
+buildNewEntry(
+  "make dinner reservations",
+  "2023-02-23",
+  "make sure everyone knows",
+  "study",
+  "medium"
+);
+
+buildNewEntry(
+  "get pictures of spiderman",
+  "2023-02-21",
+  "he's a thief",
+  "work",
+  "high"
+);
+
+buildNewEntry(
+  "soccer mommy concert",
+  "2023-03-02",
+  "remember to ask stephen to bring his bag",
+  "study",
+  "medium"
+);
+buildNewEntry(
+  "water plants",
+  "2023-01-23",
+  "be a good plant daddy",
+  "work",
+  "high"
+);
+buildNewEntry("get rock climbing shoes");
+buildNewEntry("develop film");
+buildNewEntry("learn how to develop film at home");
 
 export { myLibrary };
