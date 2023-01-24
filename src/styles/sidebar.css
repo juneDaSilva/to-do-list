@@ -68,7 +68,7 @@
 }
 
 /* only active once form unfolded */
-.form-unfolded .form div {
+.form-unfolded .sideform div {
   transition: 0.6s ease-in-out;
   padding: 15px 0;
 }

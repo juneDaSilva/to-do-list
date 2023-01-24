@@ -25,20 +25,40 @@ class Todo {
     return this.#title;
   }
 
+  setTitle(value) {
+    this.#title = value;
+  }
+
   getDueDate() {
     return this.#due_date;
+  }
+
+  setDueDate(value) {
+    this.#due_date = value;
   }
 
   getDescription() {
     return this.#description;
   }
 
+  setDescription(value) {
+    this.#description = value;
+  }
+
   getProject() {
     return this.#project;
   }
 
+  setProject(value) {
+    this.#project = value;
+  }
+
   getPriority() {
     return this.#priority;
+  }
+
+  setPriority(value) {
+    this.#priority = value;
   }
 }
 
@@ -51,14 +71,14 @@ function addToLibrary(item) {
 }
 
 // Todo maker
-const MakeNewTodo = (title, due, details) => {
-  var todo = new Todo(title, due, details);
+const MakeNewTodo = (title, due, details, project, priority) => {
+  var todo = new Todo(title, due, details, project, priority);
   return todo;
 };
 
 // bundles functions to make new entry and to push it to library in one
-export const buildNewEntry = (title, due, details) => {
-  var new_entry = MakeNewTodo(title, due, details);
+export const buildNewEntry = (title, due, details, project, priority) => {
+  var new_entry = MakeNewTodo(title, due, details, project, priority);
   addToLibrary(new_entry);
 };
 
@@ -76,6 +96,25 @@ const todo2 = new Todo(
   "study",
   "medium"
 );
+
+// Takes existing todo iteration and updates property values
+export const UpdateTodoItem = (
+  todo_num,
+  title,
+  description,
+  due,
+  project,
+  priority
+) => {
+  if (todo_num == null) return;
+  const todo = myLibrary[todo_num];
+  console.log(`-----${priority}`);
+  todo.setTitle(title);
+  todo.setDescription(description);
+  todo.setDueDate(due);
+  todo.setProject(project);
+  todo.setPriority(priority);
+};
 
 addToLibrary(todo1);
 addToLibrary(todo2);

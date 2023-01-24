@@ -1,5 +1,6 @@
 import { buildElement } from "./element-builder";
-import { myLibrary } from "./list";
+import { UpdateTodoItem, myLibrary } from "./list";
+import { addCardListeners, buildList as displayUpdatedList } from "./cards";
 
 // --------- --------- DETAILS MODAL --------- ----------
 export const buildDetailsModal = () => {
@@ -61,8 +62,8 @@ export const buildEditModal = () => {
   const header = buildElement("div", ["modal-header"]);
   const title = buildElement("input", ["edit-title"]);
   title.type = "text";
-  title.id = "title";
-  title.name = "title";
+  title.id = "edit-title";
+  title.name = "edit-title";
   title.maxLength = "27";
   title.placeholder = "Title";
   const cls_button = buildElement("img", ["close-button"]);
@@ -72,8 +73,8 @@ export const buildEditModal = () => {
   const body = buildElement("div", ["modal-body"]);
 
   const description = buildElement("textarea", ["edit-description"]);
-  description.id = "description";
-  description.name = "description";
+  description.id = "edit-description";
+  description.name = "edit-description";
   description.placeholder = "Description";
 
   const bund1 = buildElement("div", ["details-bundle"]);
@@ -84,16 +85,16 @@ export const buildEditModal = () => {
     "edit-due",
   ]);
   due_cont.type = "date";
-  due_cont.id = "due_date";
-  due_cont.name = "due_date";
+  due_cont.id = "edit-due-date";
+  due_cont.name = "edit-due-date";
   due_cont.value = "2023-01-02";
   bund1.append(due, due_cont);
 
   const bund2 = buildElement("div", ["details-bundle"]);
   const proj = buildElement("div", ["edit-label"], "Project:");
   const proj_cont = buildElement("select", ["details-content", "project"]);
-  proj_cont.id = "project";
-  proj_cont.name = "project";
+  proj_cont.id = "edit-project";
+  proj_cont.name = "edit-project";
   const proj1 = buildElement("option", ["proj-option"], "gym");
   proj1.selected = true;
   const proj2 = buildElement("option", ["proj-option"], "work");
@@ -105,8 +106,8 @@ export const buildEditModal = () => {
   const bund3 = buildElement("div", ["details-bundle"]);
   const prio = buildElement("div", ["edit-label"], "Priority:");
   const prio_cont = buildElement("select", ["details-content", "priority"]);
-  prio.id = "priority";
-  prio_cont.name = "priority";
+  prio_cont.id = "edit-priority";
+  prio_cont.name = "edit-priority";
   const prio1 = buildElement("option", ["prio-option"], "low");
   prio1.selected = true;
   const prio2 = buildElement("option", ["prio-option"], "medium");
@@ -160,10 +161,12 @@ function openModal(modal, todo_num) {
   modal.classList.add("active");
   overlay.classList.add("active");
 
+  // Filter which modal is being called and populate it accordingly
   if (modal.id == "modal") {
     populateInfoModal(todo_num);
   } else if (modal.id == "modal-form") {
     populateEditModal(todo_num);
+    listenSubmit(todo_num);
   }
 
   addCloseListeners(); // add close listeners AFTER overlay has been loaded above or else you get an error
@@ -195,8 +198,10 @@ function closeModal(modal) {
   if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
+  console.log("closeModal() called");
 }
 
+// Populate Info Modal
 const populateInfoModal = (todo_num) => {
   const todo = myLibrary[todo_num];
   document.querySelector(".details-title").innerHTML = todo.getTitle();
@@ -209,11 +214,11 @@ const populateInfoModal = (todo_num) => {
     todo.getPriority();
 };
 
+// Populate Edit modal
 const populateEditModal = (todo_num) => {
   const todo = myLibrary[todo_num];
-  document.querySelector(".edit-title").placeholder = todo.getTitle();
-  document.querySelector(".edit-description").placeholder =
-    todo.getDescription();
+  document.querySelector(".edit-title").value = todo.getTitle();
+  document.querySelector(".edit-description").value = todo.getDescription();
   document.querySelector(".edit-due").value = todo.getDueDate();
 
   const projOptions = document.querySelectorAll(".proj-option");
@@ -228,5 +233,41 @@ const populateEditModal = (todo_num) => {
     if (prio.innerHTML == todo.getPriority()) {
       prio.selected = true;
     }
+  });
+};
+
+const listenSubmit = (todo_num) => {
+  console.log(`number passed: ${todo_num}`);
+  const form = document.querySelector("#modal-form");
+
+  form.addEventListener("submit", (event) => {
+    if (todo_num == null) return;
+    const main = document.querySelector(".main");
+    const title = document.getElementById("edit-title");
+    const description = document.getElementById("edit-description");
+    const due = document.getElementById("edit-due-date");
+    const proj = document.getElementById("edit-project");
+    const prio = document.getElementById("edit-priority");
+
+    // taken from ./list
+    UpdateTodoItem(
+      todo_num,
+      title.value,
+      description.value,
+      due.value,
+      proj.value,
+      prio.value
+    );
+
+    const modal = form.closest(".modal");
+    closeModal(modal);
+
+    //taken from ./list
+    // update display and add new listeners
+    displayUpdatedList(main, myLibrary);
+    addCardListeners(main, myLibrary);
+    todo_num = null; // make null because it keeps saving value from previous click?
+
+    event.preventDefault();
   });
 };

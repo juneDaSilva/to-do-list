@@ -45,20 +45,6 @@ export const addCardListeners = (parent, library) => {
   addModalListener();
 };
 
-const addListener = (library) => {
-  const edits = document.querySelectorAll(".edit");
-
-  edits.forEach((edit) => {
-    edit.addEventListener("click", (e) => {
-      for (const item in library) {
-        if (item == e.target.value) {
-          console.log(library[item]);
-        }
-      }
-    });
-  });
-};
-
 const addTrashListener = (parent, library) => {
   const bins = document.querySelectorAll(".trash");
 

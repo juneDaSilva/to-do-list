@@ -9,7 +9,7 @@ function toggleForm() {
 
 // Listens for submit button click
 const listenSubmit = () => {
-  const form = document.querySelector(".form");
+  const form = document.querySelector(".sideform");
 
   form.addEventListener("submit", (event) => {
     const main = document.querySelector(".main");
@@ -18,7 +18,7 @@ const listenSubmit = () => {
     const due = document.getElementById("due_date");
 
     // make new item and put it into list
-    buildNewEntry(title.value, due.value, details.value);
+    buildNewEntry(title.value, due.value, details.value, null, null);
     displayUpdatedList(main, myLibrary);
 
     // clear form
