@@ -37,7 +37,7 @@ export const buildList = (parent, library) => {
     // BUT ALSO to number each card in oder to be called later
     parent.append(buildCard(library[item], item));
   }
-  // addCardListeners(parent, library);
+  addCardListeners(parent, library);
 };
 
 export const addCardListeners = (parent, library) => {
@@ -54,7 +54,7 @@ const addTrashListener = (parent, library) => {
         if (item == e.target.value) {
           library.splice(item, 1);
           buildList(parent, library);
-          addCardListeners(parent, library);
+          // addCardListeners(parent, library);
         }
       }
     });

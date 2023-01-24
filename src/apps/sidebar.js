@@ -1,4 +1,7 @@
+import { buildList } from "./cards";
 import { buildElement } from "./element-builder";
+import { myLibrary, Todo } from "./list";
+import { loadHome } from "./page-loader";
 
 export const buildSidebar = () => {
   const sidebar = buildElement("div", ["sidebar"]);
@@ -12,9 +15,13 @@ export const buildSidebar = () => {
 
   const projects_block = buildElement("div", ["side-block", "projects-block"]);
   const projects = buildElement("div", ["projects"], "02. PROJECTS");
-  const gym = buildElement("div", ["gym", "tab"], "-- GYM");
-  const work = buildElement("div", ["work", "tab"], "-- WORK");
-  const study = buildElement("div", ["study", "tab"], "-- STUDY");
+  const gym = buildElement("div", ["gym", "tab", "sidebar-proj"], "-- GYM");
+  const work = buildElement("div", ["work", "tab", "sidebar-proj"], "-- WORK");
+  const study = buildElement(
+    "div",
+    ["study", "tab", "sidebar-proj"],
+    "-- STUDY"
+  );
   projects_block.append(projects, gym, work, study);
 
   sidebar.append(addNew, buildForm(), home_block, projects_block);
@@ -75,4 +82,34 @@ const buildForm = () => {
   formContainer.append(form);
 
   return formContainer;
+};
+
+// BUILD LISTENER THAT WAITS FOR CLICK ON PROJECTS (FOR EACH) LIKE THE
+// FORMLISTEN AND LISTENSUBMIT FUNCTION ON ./FORM.JS
+export const listenSidebar = () => {
+  const content = document.querySelector("#content");
+  const main = document.querySelector(".main");
+  const projects = document.querySelectorAll(".sidebar-proj");
+  const home = document.querySelector(".home");
+
+  projects.forEach((project) => {
+    project.addEventListener("click", () => {
+      const value = project.innerHTML.replace(/[^a-z]+/gi, "").toLowerCase();
+      listProjectItems(main, value);
+    });
+  });
+
+  home.addEventListener("click", () => {
+    content.innerHTML = "";
+    loadHome();
+    // buildList(main, myLibrary);
+  });
+};
+// MAKE LISTENERS ON EACH PROJECT AND THEN ONCLICK MAKE THEM BUILD NEW LIST ACCORDINGLY
+const listProjectItems = (main, value) => {
+  for (const project in Todo.projects) {
+    if (Todo.projects[project] == value) {
+      buildList(main, Todo[value]);
+    }
+  }
 };

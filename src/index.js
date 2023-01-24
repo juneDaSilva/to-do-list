@@ -8,9 +8,9 @@ export const content = document.getElementById("content");
 // const main = document.querySelector(".main");
 
 // TODO
-// edit date-time format -- DONE --
-// Make popup for description viewing -- DONE --
-// make popup for details editing -- DONE --
+// -- DONE -- edit date-time format
+// -- DONE -- Make popup for description viewing
+// -- DONE -- make popup for details editing
 // make different builder functions for today/week
 // group todo items into projects
 // make listBuilder accoding to project groups

@@ -198,7 +198,6 @@ function closeModal(modal) {
   if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
-  console.log("closeModal() called");
 }
 
 // Populate Info Modal
@@ -265,7 +264,7 @@ const listenSubmit = (todo_num) => {
     //taken from ./list
     // update display and add new listeners
     displayUpdatedList(main, myLibrary);
-    addCardListeners(main, myLibrary);
+    // addCardListeners(main, myLibrary);
     todo_num = null; // make null because it keeps saving value from previous click?
 
     event.preventDefault();

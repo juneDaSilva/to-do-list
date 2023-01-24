@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-class Todo {
+export class Todo {
   #title;
   #description;
   #due_date;
@@ -29,7 +29,6 @@ class Todo {
     for (const proj in Todo.projects) {
       if (Todo.projects[proj] == project) {
         Todo[project].push(this);
-        console.log(Todo[project]);
       }
     }
   }
