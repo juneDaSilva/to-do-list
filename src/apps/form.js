@@ -1,5 +1,6 @@
 import { buildNewEntry, myLibrary } from "./list";
-import { buildList as displayUpdatedList } from "./cards";
+import { addCardListeners, buildList as displayUpdatedList } from "./cards";
+
 // Unfolds form via css
 function toggleForm() {
   const formContainer = document.querySelector(".form-container-folded");
@@ -20,6 +21,7 @@ const listenSubmit = () => {
     // make new item and put it into list
     buildNewEntry(title.value, due.value, details.value, null, null);
     displayUpdatedList(main, myLibrary);
+    addCardListeners(main, myLibrary);
 
     // clear form
     title.value = "";
