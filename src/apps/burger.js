@@ -1,3 +1,5 @@
+import { toggleForm } from "./sidebar";
+
 const toggleBurger = () => {
   const burger = document.querySelector(".burger-menu");
   burger.classList.toggle("burger-active");
@@ -12,7 +14,13 @@ const toggleSidebar = () => {
   AddOverlayListener(overlay);
 };
 
-const toggleMenu = () => {
+export const toggleMenu = () => {
+  const form = document.querySelector(".form-unfolded");
+
+  // if form is open
+  if (form) {
+    toggleForm();
+  }
   toggleBurger();
   toggleSidebar();
 };

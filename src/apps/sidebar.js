@@ -1,3 +1,4 @@
+import { toggleMenu } from "./burger";
 import { buildList } from "./cards";
 import { buildElement, buildFormElement } from "./element-builders";
 import { Todo, buildNewEntry, myLibrary } from "./list";
@@ -129,7 +130,7 @@ const buildForm = () => {
 // ------------ ---- 2. FORM FUNCTIONS ----- ---------
 
 // 2. Unfolds form via css
-function toggleForm() {
+export function toggleForm() {
   const formContainer = document.querySelector(".form-container-folded");
   const sideBlocks = document.querySelectorAll(".side-block");
 
@@ -159,7 +160,6 @@ const listenSubmit = () => {
       project.value,
       priority.value
     );
-    buildList(main, myLibrary);
 
     // clear form
     title.value = "";
@@ -167,6 +167,9 @@ const listenSubmit = () => {
     due.value = "";
     project.value = "project";
     priority.value = "priority";
+
+    toggleMenu();
+    buildList(main, myLibrary);
 
     event.preventDefault();
   });
