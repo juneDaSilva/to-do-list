@@ -5,7 +5,11 @@ const toggleBurger = () => {
 
 const toggleSidebar = () => {
   const sidebar = document.querySelector(".sidebar");
+  const overlay = document.getElementById("side-overlay");
+
   sidebar.classList.toggle("side-show");
+  overlay.classList.toggle("active");
+  AddOverlayListener(overlay);
 };
 
 const toggleMenu = () => {
@@ -16,6 +20,12 @@ const toggleMenu = () => {
 export const burgerListen = () => {
   const burger = document.querySelector(".burger-menu");
   burger.addEventListener("click", () => {
+    toggleMenu();
+  });
+};
+
+const AddOverlayListener = (overlay) => {
+  overlay.addEventListener("click", () => {
     toggleMenu();
   });
 };

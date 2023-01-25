@@ -35,6 +35,10 @@ header {
   margin-left: 10px;
 }
 
+.main {
+  position: relative;
+}
+
 .main-container {
   grid-row: 2/3;
   grid-column: 2/3;
@@ -206,27 +210,20 @@ header {
 }
 
 /* -------- ------- end modal styling -------- --------- */
-
-#overlay {
-  position: fixed;
+#side-overlay {
+  position: absolute;
   opacity: 0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 5;
-  background-color: rgba(0, 0, 0, 0.485);
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.222);
   pointer-events: none;
   transition: 200ms ease-in-out;
 }
 
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
-  transition: 200ms ease-in-out;
-  backdrop-filter: blur(3px);
-}
-
+#overlay,
 #edit-overlay {
   position: fixed;
   opacity: 0;
@@ -240,7 +237,9 @@ header {
   transition: 200ms ease-in-out;
 }
 
-#edit-overlay.active {
+#overlay.active,
+#edit-overlay.active,
+#side-overlay.active {
   opacity: 1;
   pointer-events: all;
   transition: 200ms ease-in-out;
