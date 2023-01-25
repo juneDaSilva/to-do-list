@@ -1,8 +1,15 @@
 import { buildList } from "./cards";
-import { buildElement, buildFormElement } from "./element-builder";
-import { myLibrary, Todo } from "./list";
+import { buildElement, buildFormElement } from "./element-builders";
+import { Todo, buildNewEntry, myLibrary } from "./list";
 import { loadHome } from "./page-loader";
 
+// 1. HTML BUILDER FUNCTIONS
+// 2. FORM FUNCTIONS
+// 3. NAVIGATION FUNCTIONS
+
+// ------------- --- 1. HTML BUILDER FUNCTIONS --- --------------
+
+// 1. Sidebar builder
 export const buildSidebar = () => {
   const sidebar = buildElement("div", ["sidebar"]);
   const addNew = buildElement("img", ["add-new"]);
@@ -40,6 +47,7 @@ export const buildSidebar = () => {
   return sidebar;
 };
 
+// 1. Form builder
 const buildForm = () => {
   const formContainer = buildElement("div", ["form-container-folded"]);
   const form = buildElement("form", ["sideform"]);
@@ -118,7 +126,60 @@ const buildForm = () => {
   return formContainer;
 };
 
-// listen for click on sidebar options and update display accordingly
+// ------------ ---- 2. FORM FUNCTIONS ----- ---------
+
+// 2. Unfolds form via css
+function toggleForm() {
+  const formContainer = document.querySelector(".form-container-folded");
+  formContainer.classList.toggle("form-unfolded");
+}
+
+// 2. Listens for submit button click
+const listenSubmit = () => {
+  const form = document.querySelector(".sideform");
+
+  form.addEventListener("submit", (event) => {
+    const main = document.querySelector(".main");
+    const title = document.getElementById("title");
+    const details = document.getElementById("details");
+    const due = document.getElementById("due_date");
+    const project = document.getElementById("side-project");
+    const priority = document.getElementById("side-priority");
+
+    // make new item and put it into list
+    buildNewEntry(
+      title.value,
+      due.value,
+      details.value,
+      project.value,
+      priority.value
+    );
+    buildList(main, myLibrary);
+
+    // clear form
+    title.value = "";
+    details.value = "";
+    due.value = "";
+    project.value = "project";
+    priority.value = "priority";
+
+    event.preventDefault();
+  });
+};
+
+// 2. make toggleForm and toggleArrow activate on button click
+export const formListen = () => {
+  const addNew = document.querySelector(".add-new");
+
+  addNew.addEventListener("click", () => {
+    toggleForm();
+    listenSubmit();
+  });
+};
+
+// --------- --- 3. NAVIGATION --- ------------
+
+// 3. listen for click on sidebar options and update display accordingly
 export const listenSidebar = () => {
   const content = document.getElementById("content");
   const main = document.querySelector(".main");

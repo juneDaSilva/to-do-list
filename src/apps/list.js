@@ -1,4 +1,4 @@
-const myLibrary = [];
+export const myLibrary = [];
 
 export class Todo {
   #title;
@@ -119,7 +119,11 @@ export const UpdateTodoItem = (
   todo.setPriority(priority);
 };
 
-// Default todo items for testing
+/*
+ * ------------------------------------------------------------------
+ * ------------------ Default todo items for testing ----------------
+ * ------------------------------------------------------------------
+ */
 
 buildNewEntry(
   "return some videotapes",
@@ -161,5 +165,3 @@ buildNewEntry(
 buildNewEntry("get rock climbing shoes");
 buildNewEntry("develop film");
 buildNewEntry("learn how to develop film at home");
-
-export { myLibrary };

@@ -1,8 +1,10 @@
-import { buildElement, buildFormElement } from "./element-builder";
-import { UpdateTodoItem, myLibrary } from "./list";
+import { buildElement, buildFormElement } from "./element-builders";
+import { UpdateTodoItem } from "./list";
 import { buildList as displayUpdatedList } from "./cards";
 
-// --------- --------- DETAILS MODAL --------- ----------
+// ---------- ----- 1. MODAL BUILDERS ----- -----------
+
+// ---- 1. Details Modal ----
 export const buildDetailsModal = () => {
   const mod_container = buildElement("div", ["modal-container"]);
   const modal = buildElement("div", ["modal"]);
@@ -52,7 +54,8 @@ export const buildDetailsModal = () => {
   return mod_container;
 };
 
-// -------- ------ EDIT MODAL ----- -----------
+// --- 1. Edit Modal ----
+
 export const buildEditModal = () => {
   const mod_container = buildElement("div", ["modal-container"]);
   const modal = buildElement("form", ["modal", "form"]);
@@ -130,7 +133,10 @@ export const buildEditModal = () => {
   return mod_container;
 };
 
-// ---------- --- Modal functions --- --------------//
+// ------------------
+// 2. MODAL FUNCTIONS
+// ------------------
+// --------------- 2. OPEN AND CLOSE FUNCTIONS ----------
 
 export const addModalListener = (library) => {
   // SELECT ALL THE DETAILS BUTTONS THAT POINT TO THE MODAL ID
@@ -196,6 +202,7 @@ function closeModal(modal) {
   overlay.classList.remove("active");
 }
 
+// --------------- ----- 2. MODAL POPULATION ----- -------------
 // Populate Info Modal
 const populateInfoModal = (library, todo_num) => {
   const todo = library[todo_num];
@@ -233,6 +240,7 @@ const populateEditModal = (library, todo_num) => {
   });
 };
 
+//  -------------- --- 2. SUBMIT MODAL INFORMATION ---- ----------
 const listenSubmit = (library, todo_num) => {
   const form = document.querySelector("#modal-form");
 

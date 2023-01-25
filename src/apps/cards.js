@@ -1,9 +1,10 @@
-import { buildElement } from "./element-builder";
+import { buildElement } from "./element-builders";
 import { format } from "date-fns";
 import { addModalListener } from "./modals";
 
 const buildCard = (todo, iteration) => {
   const title = todo.getTitle();
+
   // turn date into slash format because of weird js date bug that subtracts a day when dashes are used
   const rawDate = new Date(todo.getDueDate().replace(/-/g, "/"));
   const formattedDate = format(rawDate, "MMM do"); // display in Month/day format

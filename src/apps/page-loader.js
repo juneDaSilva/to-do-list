@@ -1,10 +1,12 @@
 import { content } from "../index.js";
-import { buildHiddenNav, buildHeader } from "./nav";
-import { buildSidebar, listenSidebar } from "./sidebar";
-import { buildMainContainer } from "./main-section.js";
-import { buildFooter } from "./footer.js";
+import { formListen, buildSidebar, listenSidebar } from "./sidebar";
+import {
+  buildHeader,
+  buildHiddenNav,
+  buildMainContainer,
+  buildFooter,
+} from "./main-section.js";
 import { burgerListen } from "./burger";
-import { formListen } from "./form.js";
 import { addCardListeners } from "./cards.js";
 import { myLibrary } from "./list.js";
 import { buildDetailsModal, buildEditModal } from "./modals.js";
