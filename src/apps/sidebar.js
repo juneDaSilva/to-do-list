@@ -131,8 +131,12 @@ const buildForm = () => {
 // 2. Unfolds form via css
 function toggleForm() {
   const formContainer = document.querySelector(".form-container-folded");
+  const sideBlocks = document.querySelectorAll(".side-block");
 
   formContainer.classList.toggle("form-unfolded");
+  sideBlocks.forEach((block) => {
+    block.classList.toggle("inactive");
+  });
 }
 
 // 2. Listens for submit button click
