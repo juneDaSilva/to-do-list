@@ -55,9 +55,8 @@
 
 /* activated with callback function */
 .form-unfolded {
-  transition: 1.6s ease-in-out;
-  height: fit-content;
-  overflow: initial;
+  transition: 0.7s ease-in-out;
+  height: 400px;
 }
 
 .sideform {
