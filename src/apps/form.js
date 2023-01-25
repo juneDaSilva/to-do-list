@@ -17,16 +17,26 @@ const listenSubmit = () => {
     const title = document.getElementById("title");
     const details = document.getElementById("details");
     const due = document.getElementById("due_date");
+    const project = document.getElementById("side-project");
+    const priority = document.getElementById("side-priority");
+    console.log(project.value);
 
     // make new item and put it into list
-    buildNewEntry(title.value, due.value, details.value, null, null);
+    buildNewEntry(
+      title.value,
+      due.value,
+      details.value,
+      project.value,
+      priority.value
+    );
     displayUpdatedList(main, myLibrary);
-    addCardListeners(main, myLibrary);
 
     // clear form
     title.value = "";
     details.value = "";
     due.value = "";
+    project.value = "project";
+    priority.value = "priority";
 
     event.preventDefault();
   });

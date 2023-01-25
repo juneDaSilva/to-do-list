@@ -1,5 +1,5 @@
 import { buildList } from "./cards";
-import { buildElement } from "./element-builder";
+import { buildElement, buildFormElement } from "./element-builder";
 import { myLibrary, Todo } from "./list";
 import { loadHome } from "./page-loader";
 
@@ -41,10 +41,7 @@ const buildForm = () => {
     "textBlock",
   ]);
   const title = buildElement("input");
-  title.type = "text";
-  title.id = "title";
-  title.name = "title";
-  title.placeholder = "todo title";
+  buildFormElement(title, "title", "title", "text", "todo title");
   title.maxLength = "27";
   titleBlock.append(title);
 
@@ -55,10 +52,7 @@ const buildForm = () => {
   ]);
   const details = buildElement("textarea");
   details.rows = "4";
-
-  details.id = "details";
-  details.name = "details";
-  details.placeholder = "details";
+  buildFormElement(details, "details", "details", null, "details");
   detailsBlock.append(details);
 
   const dateBlock = buildElement("div", [
@@ -67,18 +61,47 @@ const buildForm = () => {
     "textBlock",
   ]);
   const date = buildElement("input");
-  date.type = "date";
-  date.id = "due_date";
-  date.name = "due_date";
+  buildFormElement(date, "due_date", "due_date", "date");
   date.required = "true";
   dateBlock.append(date);
+
+  const projBlock = buildElement("div", ["inputBlock", "textBlock"]);
+  const project = buildElement("select");
+  buildFormElement(project, "side-project", "side-project");
+  const proj1 = buildElement("option", null, "project");
+  proj1.selected = true;
+  proj1.disabled = true;
+  const proj2 = buildElement("option", null, "gym", "gym");
+  const proj3 = buildElement("option", null, "work", "work");
+  const proj4 = buildElement("option", null, "study", "study");
+  project.append(proj1, proj2, proj3, proj4);
+  projBlock.append(project);
+
+  const prioBlock = buildElement("div", ["inputBlock", "textBlock"]);
+  const priority = buildElement("select");
+  buildFormElement(priority, "side-priority", "side-priority");
+  const prio1 = buildElement("option", null, "priority");
+  prio1.selected = true;
+  prio1.disabled = true;
+  const prio2 = buildElement("option", null, "low", "low");
+  const prio3 = buildElement("option", null, "medium", "medium");
+  const prio4 = buildElement("option", null, "high", "high");
+  priority.append(prio1, prio2, prio3, prio4);
+  prioBlock.append(priority);
 
   const submitBlock = buildElement("div", ["submitBlock", "inputBlock"]);
   const submit = buildElement("button", ["submitButton"], "add note");
   submit.type = "#";
   submitBlock.append(submit);
 
-  form.append(titleBlock, detailsBlock, dateBlock, submitBlock);
+  form.append(
+    titleBlock,
+    detailsBlock,
+    dateBlock,
+    projBlock,
+    prioBlock,
+    submitBlock
+  );
   formContainer.append(form);
 
   return formContainer;

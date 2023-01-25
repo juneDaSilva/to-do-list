@@ -19,7 +19,7 @@
     <div id="content">
 
       <div class="modal-container">
-        <form class="modal active form" id="modal-form" method="post">
+        <form class="modal form" id="modal-form" method="post">
           <div class="modal-header">
             <input type="text" id="title" name="title" class="edit-title" maxlength="27" placeholder="Title"></input>
             <img data-close-button class="close-button"></img>
@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <div id="overlay" class="active"></div>
+      <div id="overlay"></div>
 
 
       <nav class="hidden-nav">
@@ -100,7 +100,7 @@
         <img class="add-new" alt="add logo">
 
         <div class="form-container-folded">
-          <form class="side-form" action="#" method="post">
+          <form class="sideform" action="#" method="post">
             <div class="titleBlock inputBlock textBlock">
               <input type="text" id="title" name="title" placeholder="todo title" maxlength="27">
             </div>
@@ -110,6 +110,23 @@
             <div class="dateBlock inputBlock textBlock">
               <input type="date" id="due_date" name="due_date" required>
             </div>
+            <div class="inputBlock textBlock">
+              <select name="side-project" id="side-project">
+                <option value="" disabled selected>project</option>
+                <option value="gym">gym</option>
+                <option value="work">work</option>
+                <option value="study">study</option>
+              </select>
+            </div>
+            <div class="inputBlock textBlock">
+              <select name="side-priority" id="side-priority">
+                <option value="" disabled selected>priority</option>
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
+              </select>
+            </div>
+
             <div class="submitBlock inputBlock">
               <button type="#" class="submitButton">add note</button>
             </div>

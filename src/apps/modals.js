@@ -1,6 +1,6 @@
-import { buildElement } from "./element-builder";
+import { buildElement, buildFormElement } from "./element-builder";
 import { UpdateTodoItem, myLibrary } from "./list";
-import { addCardListeners, buildList as displayUpdatedList } from "./cards";
+import { buildList as displayUpdatedList } from "./cards";
 
 // --------- --------- DETAILS MODAL --------- ----------
 export const buildDetailsModal = () => {
@@ -61,11 +61,8 @@ export const buildEditModal = () => {
 
   const header = buildElement("div", ["modal-header"]);
   const title = buildElement("input", ["edit-title"]);
-  title.type = "text";
-  title.id = "edit-title";
-  title.name = "edit-title";
+  buildFormElement(title, "edit-title", "edit-title", "text", "Title");
   title.maxLength = "27";
-  title.placeholder = "Title";
   const cls_button = buildElement("img", ["close-button"]);
   cls_button.setAttribute("data-close-button", "");
   header.append(title, cls_button);
@@ -73,9 +70,13 @@ export const buildEditModal = () => {
   const body = buildElement("div", ["modal-body"]);
 
   const description = buildElement("textarea", ["edit-description"]);
-  description.id = "edit-description";
-  description.name = "edit-description";
-  description.placeholder = "Description";
+  buildFormElement(
+    description,
+    "edit-description",
+    "edit-description",
+    null,
+    "Description"
+  );
 
   const bund1 = buildElement("div", ["details-bundle"]);
   const due = buildElement("div", ["edit-label"], "Due:");
@@ -84,17 +85,13 @@ export const buildEditModal = () => {
     "due",
     "edit-due",
   ]);
-  due_cont.type = "date";
-  due_cont.id = "edit-due-date";
-  due_cont.name = "edit-due-date";
-  due_cont.value = "2023-01-02";
+  buildFormElement(due_cont, "edit-due-date", "edit-due-date", "date");
   bund1.append(due, due_cont);
 
   const bund2 = buildElement("div", ["details-bundle"]);
   const proj = buildElement("div", ["edit-label"], "Project:");
   const proj_cont = buildElement("select", ["details-content", "project"]);
-  proj_cont.id = "edit-project";
-  proj_cont.name = "edit-project";
+  buildFormElement(proj_cont, "edit-project", "edit-project");
   const proj1 = buildElement("option", ["proj-option"], "gym");
   proj1.selected = true;
   const proj2 = buildElement("option", ["proj-option"], "work");
@@ -106,8 +103,7 @@ export const buildEditModal = () => {
   const bund3 = buildElement("div", ["details-bundle"]);
   const prio = buildElement("div", ["edit-label"], "Priority:");
   const prio_cont = buildElement("select", ["details-content", "priority"]);
-  prio_cont.id = "edit-priority";
-  prio_cont.name = "edit-priority";
+  buildFormElement(prio_cont, "edit-priority", "edit-priority");
   const prio1 = buildElement("option", ["prio-option"], "low");
   prio1.selected = true;
   const prio2 = buildElement("option", ["prio-option"], "medium");

@@ -53,7 +53,7 @@
 /* activated with callback function */
 .form-unfolded {
   transition: 0.6s ease-in-out;
-  height: 310px;
+  height: 400px;
 }
 
 .sideform {
@@ -73,24 +73,28 @@
   padding: 15px 0;
 }
 
-.inputBlock input {
+.inputBlock input,
+.inputBlock select {
   flex: 1;
   border: 2px solid rgb(142, 142, 142);
   border-radius: 3px;
   padding-left: 10px;
-  height: 20px;
+  height: 22px;
   background-color: transparent;
   font-size: 14px;
   letter-spacing: 2px;
   color: rgb(0, 0, 0);
   font-weight: 400;
   transition: 0.2s;
+  resize: none;
 }
 
-.inputBlock input:focus {
+.inputBlock input:focus,
+.inputBlock select:focus,
+textarea:focus {
   border: 2px solid rgb(0, 0, 0);
   outline: none;
-  height: 24px;
+  transform: scaleY(1.1);
   transition: 0.2s;
 }
 
@@ -105,12 +109,6 @@ textarea {
   color: rgb(0, 0, 0);
   transition: 0.2s;
   resize: none;
-}
-
-textarea:focus {
-  border: 2px solid rgb(0, 0, 0);
-  outline: none;
-  transition: 0.2s;
 }
 
 .submitButton {
