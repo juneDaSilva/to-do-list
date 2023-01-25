@@ -15,12 +15,23 @@ export const buildSidebar = () => {
 
   const projects_block = buildElement("div", ["side-block", "projects-block"]);
   const projects = buildElement("div", ["projects"], "02. PROJECTS");
-  const gym = buildElement("div", ["gym", "tab", "sidebar-proj"], "-- GYM");
-  const work = buildElement("div", ["work", "tab", "sidebar-proj"], "-- WORK");
+  const gym = buildElement(
+    "div",
+    ["gym", "tab", "sidebar-proj"],
+    "-- GYM",
+    "gym"
+  );
+  const work = buildElement(
+    "div",
+    ["work", "tab", "sidebar-proj"],
+    "-- WORK",
+    "work"
+  );
   const study = buildElement(
     "div",
     ["study", "tab", "sidebar-proj"],
-    "-- STUDY"
+    "-- STUDY",
+    "study"
   );
   projects_block.append(projects, gym, work, study);
 
@@ -107,17 +118,16 @@ const buildForm = () => {
   return formContainer;
 };
 
-// BUILD LISTENER THAT WAITS FOR CLICK ON PROJECTS (FOR EACH) LIKE THE
-// FORMLISTEN AND LISTENSUBMIT FUNCTION ON ./FORM.JS
+// listen for click on sidebar options and update display accordingly
 export const listenSidebar = () => {
-  const content = document.querySelector("#content");
+  const content = document.getElementById("content");
   const main = document.querySelector(".main");
   const projects = document.querySelectorAll(".sidebar-proj");
   const home = document.querySelector(".home");
 
   projects.forEach((project) => {
     project.addEventListener("click", () => {
-      const value = project.innerHTML.replace(/[^a-z]+/gi, "").toLowerCase();
+      const value = project.value;
       listProjectItems(main, value);
     });
   });
@@ -125,10 +135,10 @@ export const listenSidebar = () => {
   home.addEventListener("click", () => {
     content.innerHTML = "";
     loadHome();
-    // buildList(main, myLibrary);
   });
 };
-// MAKE LISTENERS ON EACH PROJECT AND THEN ONCLICK MAKE THEM BUILD NEW LIST ACCORDINGLY
+
+// build display list using only todo items in Todo.array of project clicked
 const listProjectItems = (main, value) => {
   for (const project in Todo.projects) {
     if (Todo.projects[project] == value) {

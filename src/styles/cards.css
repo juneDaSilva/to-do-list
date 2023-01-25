@@ -32,11 +32,14 @@
   min-width: 15px;
   border: 2px solid var(--font);
   border-radius: 10px;
+  background-color: #000;
+  color: #000;
 }
 
 .check:hover {
   border: 2px solid rgb(0, 76, 255);
   cursor: pointer;
+  background-color: var(--main);
 }
 
 /* --- title --- */

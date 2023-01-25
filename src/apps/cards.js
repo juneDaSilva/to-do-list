@@ -10,7 +10,8 @@ const buildCard = (todo, iteration) => {
 
   const card = buildElement("div", ["card"]);
   card.value = iteration;
-  const check = buildElement("div", ["check"]);
+  const check = buildElement("input", ["check"]);
+  check.type = "checkbox";
   check.value = iteration;
   const title_box = buildElement("div", ["title"], title);
   const tools = buildElement("div", ["tools"]);
@@ -42,7 +43,7 @@ export const buildList = (parent, library) => {
 
 export const addCardListeners = (parent, library) => {
   addTrashListener(parent, library);
-  addModalListener();
+  addModalListener(library);
 };
 
 const addTrashListener = (parent, library) => {
@@ -54,7 +55,6 @@ const addTrashListener = (parent, library) => {
         if (item == e.target.value) {
           library.splice(item, 1);
           buildList(parent, library);
-          // addCardListeners(parent, library);
         }
       }
     });

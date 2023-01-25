@@ -102,6 +102,7 @@ export const buildNewEntry = (
 
 // Takes existing todo iteration and updates property values
 export const UpdateTodoItem = (
+  library,
   todo_num,
   title,
   description,
@@ -110,7 +111,7 @@ export const UpdateTodoItem = (
   priority
 ) => {
   if (todo_num == null) return;
-  const todo = myLibrary[todo_num];
+  const todo = library[todo_num];
   todo.setTitle(title);
   todo.setDescription(description);
   todo.setDueDate(due);

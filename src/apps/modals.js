@@ -132,7 +132,7 @@ export const buildEditModal = () => {
 
 // ---------- --- Modal functions --- --------------//
 
-export const addModalListener = () => {
+export const addModalListener = (library) => {
   // SELECT ALL THE DETAILS BUTTONS THAT POINT TO THE MODAL ID
   const InfoModalButtons = document.querySelectorAll("[data-modal-target]");
   const EditModalButtons = document.querySelectorAll("[data-edit-target]");
@@ -140,29 +140,29 @@ export const addModalListener = () => {
   InfoModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = document.querySelector(button.dataset.modalTarget);
-      openModal(modal, button.value); // this function also starts the closer listeners
+      openModal(library, modal, button.value); // this function also starts the closer listeners
     });
   });
 
   EditModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = document.querySelector(button.dataset.editTarget);
-      openModal(modal, button.value);
+      openModal(library, modal, button.value);
     });
   });
 };
 
-function openModal(modal, todo_num) {
+function openModal(library, modal, todo_num) {
   if (modal == null) return;
   modal.classList.add("active");
   overlay.classList.add("active");
 
   // Filter which modal is being called and populate it accordingly
   if (modal.id == "modal") {
-    populateInfoModal(todo_num);
+    populateInfoModal(library, todo_num);
   } else if (modal.id == "modal-form") {
-    populateEditModal(todo_num);
-    listenSubmit(todo_num);
+    populateEditModal(library, todo_num);
+    listenSubmit(library, todo_num);
   }
 
   addCloseListeners(); // add close listeners AFTER overlay has been loaded above or else you get an error
@@ -197,8 +197,8 @@ function closeModal(modal) {
 }
 
 // Populate Info Modal
-const populateInfoModal = (todo_num) => {
-  const todo = myLibrary[todo_num];
+const populateInfoModal = (library, todo_num) => {
+  const todo = library[todo_num];
   document.querySelector(".details-title").innerHTML = todo.getTitle();
   document.querySelector(".details-description").innerHTML =
     todo.getDescription();
@@ -210,12 +210,13 @@ const populateInfoModal = (todo_num) => {
 };
 
 // Populate Edit modal
-const populateEditModal = (todo_num) => {
-  const todo = myLibrary[todo_num];
+const populateEditModal = (library, todo_num) => {
+  const todo = library[todo_num];
   document.querySelector(".edit-title").value = todo.getTitle();
   document.querySelector(".edit-description").value = todo.getDescription();
   document.querySelector(".edit-due").value = todo.getDueDate();
 
+  // load previously selected project
   const projOptions = document.querySelectorAll(".proj-option");
   projOptions.forEach((proj) => {
     if (proj.innerHTML == todo.getProject()) {
@@ -223,6 +224,7 @@ const populateEditModal = (todo_num) => {
     }
   });
 
+  // load previously selected priority
   const prioOptions = document.querySelectorAll(".prio-option");
   prioOptions.forEach((prio) => {
     if (prio.innerHTML == todo.getPriority()) {
@@ -231,7 +233,7 @@ const populateEditModal = (todo_num) => {
   });
 };
 
-const listenSubmit = (todo_num) => {
+const listenSubmit = (library, todo_num) => {
   const form = document.querySelector("#modal-form");
 
   form.addEventListener("submit", (event) => {
@@ -245,6 +247,7 @@ const listenSubmit = (todo_num) => {
 
     // taken from ./list
     UpdateTodoItem(
+      library,
       todo_num,
       title.value,
       description.value,
@@ -259,7 +262,7 @@ const listenSubmit = (todo_num) => {
 
     //taken from ./list
     // update display and add new listeners
-    displayUpdatedList(main, myLibrary);
+    displayUpdatedList(main, library);
     // addCardListeners(main, myLibrary);
     todo_num = null; // make null because it keeps saving value from previous click?
 
