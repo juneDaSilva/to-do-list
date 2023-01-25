@@ -64,7 +64,7 @@ header {
   transform: translate(-50%, -50%) scale(0);
   border: 2px solid #000;
   border-radius: 5px;
-  z-index: 10;
+  z-index: 15;
   background-color: var(--main);
   transition: 200ms ease-in-out;
   padding: 10px;
@@ -231,7 +231,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.485);
   pointer-events: none;
   transition: 200ms ease-in-out;
