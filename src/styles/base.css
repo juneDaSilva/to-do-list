@@ -356,7 +356,7 @@ header {
 
   .sidebar {
     transform: translateX(-400px);
-    width: 50vw;
+    width: 60vw;
     transition: 0.5s;
   }
 
