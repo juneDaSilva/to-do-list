@@ -268,7 +268,6 @@ const listenSubmit = (library, todo_num) => {
     const modal = form.closest(".modal");
     closeModal(modal);
 
-    //taken from ./list
     // update display and add new listeners
     displayUpdatedList(main, library);
     // addCardListeners(main, myLibrary);

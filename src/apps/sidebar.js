@@ -177,7 +177,7 @@ export const formListen = () => {
   });
 };
 
-// --------- --- 3. NAVIGATION --- ------------
+// ------------ --- 3. NAVIGATION --- ---------------
 
 // 3. listen for click on sidebar options and update display accordingly
 export const listenSidebar = () => {
@@ -199,7 +199,7 @@ export const listenSidebar = () => {
   });
 };
 
-// build display list using only todo items in Todo.array of project clicked
+// 3. build display list using only todo items in Todo.array of project clicked
 const listProjectItems = (main, value) => {
   for (const project in Todo.projects) {
     if (Todo.projects[project] == value) {
