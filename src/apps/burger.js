@@ -9,9 +9,16 @@ const toggleSidebar = () => {
   const sidebar = document.querySelector(".sidebar");
   const overlay = document.getElementById("side-overlay");
 
+  if (overlay) {
+    console.log("still here");
+  }
+  console.log(overlay);
   sidebar.classList.toggle("side-show");
   overlay.classList.toggle("active");
-  AddOverlayListener(overlay);
+
+  if (overlay) {
+    AddOverlayListener(overlay);
+  }
 };
 
 export const toggleMenu = () => {
