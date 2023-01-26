@@ -43,9 +43,9 @@ export const buildList = (parent, library) => {
   addCardListeners(parent, library);
 
   // add to bottom of list - clickable overlay that comes up when sidebar comes up
-  const overlay = buildElement("div");
-  overlay.id = "side-overlay";
-  parent.append(overlay);
+  // const overlay = buildElement("div");
+  // overlay.id = "side-overlay";
+  // parent.append(overlay);
 };
 
 export const addCardListeners = (parent, library) => {

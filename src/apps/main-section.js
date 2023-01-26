@@ -35,7 +35,10 @@ export const buildMainContainer = () => {
   const main_container = buildElement("div", ["main-container"]);
   const main = buildElement("main", ["main"]);
   buildList(main, myLibrary);
-  main_container.append(main);
+
+  const overlay = buildElement("div");
+  overlay.id = "side-overlay";
+  main_container.append(main, overlay);
 
   return main_container;
 };

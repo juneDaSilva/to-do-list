@@ -35,10 +35,6 @@ header {
   margin-left: 10px;
 }
 
-.main {
-  position: relative;
-}
-
 .main-container {
   grid-row: 2/3;
   grid-column: 2/3;
@@ -46,6 +42,7 @@ header {
   overflow-y: auto;
   background-color: var(--main);
   max-width: 80rem;
+  position: relative;
 }
 
 .inactive-main {
@@ -218,7 +215,7 @@ header {
   right: 0;
   bottom: 0;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.222);
+  background-color: rgba(0, 0, 0, 0);
   pointer-events: none;
   transition: 200ms ease-in-out;
 }

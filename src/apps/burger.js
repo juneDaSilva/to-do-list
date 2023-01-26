@@ -39,7 +39,7 @@ export const burgerListen = () => {
   });
 };
 
-const AddOverlayListener = (overlay) => {
+export const AddOverlayListener = (overlay) => {
   overlay.addEventListener("click", () => {
     toggleMenu();
   });
