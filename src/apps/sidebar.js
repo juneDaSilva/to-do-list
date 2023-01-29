@@ -1,7 +1,7 @@
 import { AddOverlayListener, toggleMenu } from "./burger";
 import { buildList } from "./cards";
 import { buildElement, buildFormElement } from "./element-builders";
-import { Todo, buildNewEntry, myLibrary } from "./list";
+import { Todo, buildNewEntry, myLibrary } from "./libraries";
 import { loadHome } from "./page-loader";
 
 // 1. HTML BUILDER FUNCTIONS
@@ -16,7 +16,7 @@ export const buildSidebar = () => {
   const addNew = buildElement("img", ["add-new"]);
   addNew.alt = "add logo";
   const home_block = buildElement("div", ["side-block", "home-block"]);
-  const home = buildElement("div", ["home"], "01. HOME");
+  const home = buildElement("div", ["home"], "01. HOME", "myLibrary");
   const today = buildElement("div", ["today", "tab"], "-- TODAY");
   const week = buildElement("div", ["week", "tab"], "-- WEEK");
   home_block.append(home, today, week);
@@ -88,9 +88,10 @@ const buildForm = () => {
   const projBlock = buildElement("div", ["inputBlock", "textBlock"]);
   const project = buildElement("select");
   buildFormElement(project, "side-project", "side-project");
-  const proj1 = buildElement("option", null, "project");
+  const proj1 = buildElement("option", null, "project", " ");
   proj1.selected = true;
   proj1.disabled = true;
+
   const proj2 = buildElement("option", null, "gym", "gym");
   const proj3 = buildElement("option", null, "work", "work");
   const proj4 = buildElement("option", null, "study", "study");
@@ -100,7 +101,7 @@ const buildForm = () => {
   const prioBlock = buildElement("div", ["inputBlock", "textBlock"]);
   const priority = buildElement("select");
   buildFormElement(priority, "side-priority", "side-priority");
-  const prio1 = buildElement("option", null, "priority");
+  const prio1 = buildElement("option", null, "priority", "");
   prio1.selected = true;
   prio1.disabled = true;
   const prio2 = buildElement("option", null, "low", "low");
@@ -169,7 +170,7 @@ const listenSubmit = () => {
     priority.value = "priority";
 
     toggleMenu();
-    buildList(main, myLibrary);
+    buildList(main, "myLibrary");
 
     event.preventDefault();
   });
@@ -189,7 +190,6 @@ export const formListen = () => {
 
 // 3. listen for click on sidebar options and update display accordingly
 export const listenSidebar = () => {
-  const content = document.getElementById("content");
   const main = document.querySelector(".main");
   const projects = document.querySelectorAll(".sidebar-proj");
   const home = document.querySelector(".home");
@@ -202,8 +202,7 @@ export const listenSidebar = () => {
   });
 
   home.addEventListener("click", () => {
-    content.innerHTML = "";
-    loadHome();
+    buildList(main, home.value);
   });
 };
 
@@ -211,7 +210,7 @@ export const listenSidebar = () => {
 const listProjectItems = (main, value) => {
   for (const project in Todo.projects) {
     if (Todo.projects[project] == value) {
-      buildList(main, Todo[value]);
+      buildList(main, value);
     }
   }
 };

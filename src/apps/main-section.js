@@ -1,6 +1,12 @@
 import { buildElement } from "./element-builders";
 import { buildList } from "./cards";
-import { myLibrary } from "./list";
+import {
+  Todo,
+  buildExamples,
+  buildNewEntry,
+  MakeNewTodo,
+  myLibrary,
+} from "./libraries";
 
 // ------------ ---- 1. HEADER NAV BUILDER ---- -----------
 export const buildHiddenNav = () => {
@@ -34,8 +40,19 @@ export const buildHeader = () => {
 export const buildMainContainer = () => {
   const main_container = buildElement("div", ["main-container"]);
   const main = buildElement("main", ["main"]);
-  buildList(main, myLibrary);
 
+  if (localStorage.getObj("myLibrary")) {
+    buildList(main, "myLibrary");
+    console.log(localStorage.getObj("myLibrary"));
+    console.log(Todo.myLibrary);
+    updateLibraries();
+    console.log(Todo.myLibrary);
+  } else {
+    console.log("nothing here");
+    buildExamples();
+    buildList(main, "myLibrary");
+    console.log(Todo.myLibrary);
+  }
   const overlay = buildElement("div");
   overlay.id = "side-overlay";
   main_container.append(main, overlay);
@@ -43,6 +60,14 @@ export const buildMainContainer = () => {
   return main_container;
 };
 
+// populates Todo.myLibrary
+const updateLibraries = () => {
+  const library = localStorage.getObj("myLibrary");
+  for (const item in library) {
+    const todo = library[item];
+    MakeNewTodo(todo[0], todo[1], todo[2], todo[3], todo[4]);
+  }
+};
 // ------------ ---- 3. FOOTER BUILDER ---- ----------
 
 export const buildFooter = () => {

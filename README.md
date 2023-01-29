@@ -27,3 +27,5 @@ Feature ideas to implement.
 4. Create logins and allow shared projects / notes between users.
 
 5. Add priority colors
+
+6. Create new projects

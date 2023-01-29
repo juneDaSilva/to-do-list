@@ -1,5 +1,5 @@
 import { buildElement, buildFormElement } from "./element-builders";
-import { UpdateTodoItem } from "./list";
+import { Todo, UpdateTodoItem } from "./libraries";
 import { buildList as displayUpdatedList } from "./cards";
 
 // ---------- ----- 1. MODAL BUILDERS ----- -----------
@@ -95,11 +95,13 @@ export const buildEditModal = () => {
   const proj = buildElement("div", ["edit-label"], "Project:");
   const proj_cont = buildElement("select", ["details-content", "project"]);
   buildFormElement(proj_cont, "edit-project", "edit-project");
+  const proj0 = buildElement("option", ["proj-option"], " ");
+  proj0.selected = true;
   const proj1 = buildElement("option", ["proj-option"], "gym");
-  proj1.selected = true;
   const proj2 = buildElement("option", ["proj-option"], "work");
   const proj3 = buildElement("option", ["proj-option"], "study");
-  proj_cont.append(proj1, proj2, proj3);
+
+  proj_cont.append(proj0, proj1, proj2, proj3);
   bund2.append(proj, proj_cont);
 
   const row = buildElement("div", ["date-project-row"]);
@@ -146,6 +148,7 @@ export const addModalListener = (library) => {
   InfoModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const modal = document.querySelector(button.dataset.modalTarget);
+
       openModal(library, modal, button.value); // this function also starts the closer listeners
     });
   });
@@ -165,9 +168,11 @@ function openModal(library, modal, todo_num) {
 
   // Filter which modal is being called and populate it accordingly
   if (modal.id == "modal") {
+    console.log(library);
     populateInfoModal(library, todo_num);
   } else if (modal.id == "modal-form") {
     populateEditModal(library, todo_num);
+    console.log("submit", library);
     listenSubmit(library, todo_num);
   }
 
@@ -205,28 +210,28 @@ function closeModal(modal) {
 // --------------- ----- 2. MODAL POPULATION ----- -------------
 // Populate Info Modal
 const populateInfoModal = (library, todo_num) => {
-  const todo = library[todo_num];
-  document.querySelector(".details-title").innerHTML = todo.getTitle();
-  document.querySelector(".details-description").innerHTML =
-    todo.getDescription();
-  document.querySelector(".details-content.due").innerHTML = todo.getDueDate();
-  document.querySelector(".details-content.project").innerHTML =
-    todo.getProject();
-  document.querySelector(".details-content.priority").innerHTML =
-    todo.getPriority();
+  console.log(library);
+  const todo = localStorage.getObj(library)[todo_num];
+
+  document.querySelector(".details-title").innerHTML = todo[0];
+  document.querySelector(".details-description").innerHTML = todo[1];
+  document.querySelector(".details-content.due").innerHTML = todo[2];
+  document.querySelector(".details-content.project").innerHTML = todo[3];
+  document.querySelector(".details-content.priority").innerHTML = todo[4];
 };
 
 // Populate Edit modal
 const populateEditModal = (library, todo_num) => {
-  const todo = library[todo_num];
-  document.querySelector(".edit-title").value = todo.getTitle();
-  document.querySelector(".edit-description").value = todo.getDescription();
-  document.querySelector(".edit-due").value = todo.getDueDate();
+  console.log(Todo[library]);
+  const todo = localStorage.getObj(library)[todo_num];
+  document.querySelector(".edit-title").value = todo[0];
+  document.querySelector(".edit-description").value = todo[1];
+  document.querySelector(".edit-due").value = todo[2];
 
   // load previously selected project
   const projOptions = document.querySelectorAll(".proj-option");
   projOptions.forEach((proj) => {
-    if (proj.innerHTML == todo.getProject()) {
+    if (proj.innerHTML == todo[3]) {
       proj.selected = true;
     }
   });
@@ -234,7 +239,7 @@ const populateEditModal = (library, todo_num) => {
   // load previously selected priority
   const prioOptions = document.querySelectorAll(".prio-option");
   prioOptions.forEach((prio) => {
-    if (prio.innerHTML == todo.getPriority()) {
+    if (prio.innerHTML == todo[4]) {
       prio.selected = true;
     }
   });
@@ -255,7 +260,7 @@ const listenSubmit = (library, todo_num) => {
 
     // taken from ./list
     UpdateTodoItem(
-      library,
+      Todo[library],
       todo_num,
       title.value,
       description.value,
@@ -270,7 +275,7 @@ const listenSubmit = (library, todo_num) => {
 
     // update display and add new listeners
     displayUpdatedList(main, library);
-    // addCardListeners(main, myLibrary);
+
     todo_num = null; // make null because it keeps saving value from previous click?
 
     event.preventDefault();

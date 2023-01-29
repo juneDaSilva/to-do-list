@@ -8,7 +8,7 @@ import {
 } from "./main-section.js";
 import { burgerListen } from "./burger";
 import { addCardListeners } from "./cards.js";
-import { myLibrary } from "./list.js";
+import { myLibrary } from "./libraries.js";
 import { buildDetailsModal, buildEditModal } from "./modals.js";
 
 export const loadHome = () => {
@@ -25,5 +25,5 @@ export const loadHome = () => {
   burgerListen();
   formListen();
   listenSidebar();
-  addCardListeners(main, myLibrary);
+  addCardListeners(main, "myLibrary");
 };
