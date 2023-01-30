@@ -153,6 +153,10 @@ const listenSubmit = () => {
     const project = document.getElementById("side-project");
     const priority = document.getElementById("side-priority");
 
+    // put this here in case event listener gets fired again with no values
+    if (due.value == "") {
+      return;
+    }
     // make new item and put it into list
     buildNewEntry(
       title.value,
