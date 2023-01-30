@@ -236,4 +236,29 @@ export const buildExamples = () => {
   buildNewEntry("get rock climbing shoes");
   buildNewEntry("develop film");
   buildNewEntry("learn how to develop film at home");
+  buildNewEntry(
+    "Make 'create object'",
+    "2023-01-23",
+    "Make a feature that can create new projects"
+  );
+  buildNewEntry(
+    "'today/week' view",
+    "2023-01-23",
+    "Make feature that groups items by whether they are due today or this week"
+  );
+  buildNewEntry(
+    "'check done' feature",
+    "2023-01-23",
+    "Make feature that grays out items or marks them as done without deleting them. maybe moving to a done folder?"
+  );
+  buildNewEntry(
+    "'Sort' feature",
+    "2023-01-23",
+    "Sort item by date or priority option"
+  );
+  buildNewEntry(
+    "Add priority colors",
+    "2023-01-23",
+    "Add a little tiny border on the left of a card with color coded priorities"
+  );
 };
