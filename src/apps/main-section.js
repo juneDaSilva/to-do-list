@@ -1,12 +1,6 @@
 import { buildElement } from "./element-builders";
 import { buildList } from "./cards";
-import {
-  Todo,
-  buildExamples,
-  buildNewEntry,
-  MakeNewTodo,
-  myLibrary,
-} from "./libraries";
+import { buildExamples, MakeNewTodo } from "./libraries";
 
 // ------------ ---- 1. HEADER NAV BUILDER ---- -----------
 export const buildHiddenNav = () => {
@@ -43,15 +37,10 @@ export const buildMainContainer = () => {
 
   if (localStorage.getObj("myLibrary")) {
     buildList(main, "myLibrary");
-    console.log(localStorage.getObj("myLibrary"));
-    console.log(Todo.myLibrary);
     updateLibraries();
-    console.log(Todo.myLibrary);
   } else {
-    console.log("nothing here");
     buildExamples();
     buildList(main, "myLibrary");
-    console.log(Todo.myLibrary);
   }
   const overlay = buildElement("div");
   overlay.id = "side-overlay";

@@ -1,4 +1,4 @@
-import { buildList } from "./cards";
+import { buildList, removeItem } from "./cards";
 
 export class Todo {
   #title;
@@ -67,14 +67,13 @@ export class Todo {
   }
 
   setProject(value) {
-    // if project is changed,
-    // remove todo item from previous project library
+    // only make change if
+    //    new value isnt blank
+    //    new value isnt the same as old value
     if (value != "" && this.#project != value) {
-      removeFromProjects(this.#project, this);
-    }
-    this.#project = value;
-    if (value != "") {
-      Todo[value].push(this);
+      removeFromProjects(this.#project, this); // remove from old project list
+      this.#project = value; // set new project
+      Todo[value].push(this); // add item to new project list
     }
   }
 
@@ -90,13 +89,9 @@ export class Todo {
 // ----------------------------
 // ------ LIST FUNCTIONS ------
 
-// add to library
-
 // Todo maker
 export const MakeNewTodo = (title, due, details, project, priority) => {
-  var todo = new Todo(title, due, details, project, priority);
-  // console.log(todo);
-  // alert(todo);
+  new Todo(title, due, details, project, priority);
 };
 
 // bundles functions to make new entry and to push it to library in one
@@ -115,8 +110,8 @@ export const UpdateTodoItem = (
   library,
   todo_num,
   title,
-  due,
   description,
+  due,
   project,
   priority
 ) => {
@@ -127,8 +122,8 @@ export const UpdateTodoItem = (
 
   // update values
   todo.setTitle(title);
-  todo.setDueDate(due);
   todo.setDescription(description);
+  todo.setDueDate(due);
   todo.setProject(project);
   todo.setPriority(priority);
 
@@ -141,16 +136,17 @@ export const UpdateTodoItem = (
 
 const removeFromProjects = (library, todo) => {
   const title = todo.getTitle();
+  const list = Todo[library];
 
-  // iterate through items in library
-  for (const item in Todo[library]) {
-    // remove the object that matches reference object
-    if (Todo[library][item].getTitle() == title) {
-      Todo[library].splice(item, 1);
+  // iterate through items in list
+  for (const item in list) {
+    // remove the item that matches reference
+    if (list[item].getTitle() == title) {
+      list.splice(item, 1);
     }
   }
   // update localStorage of to reflect changes
-  updateStorage(library, Todo[library]);
+  updateStorage(library, list);
 };
 
 // -------------------------------------

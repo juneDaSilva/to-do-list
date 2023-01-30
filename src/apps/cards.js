@@ -59,9 +59,7 @@ const addTrashListener = (parent, library) => {
     bin.addEventListener("click", (e) => {
       for (const item in library) {
         if (item == e.target.value) {
-          removeItem(library, item, Todo[library][item]);
-          // Todo[library].splice(item, 1);
-          // updateStorage(library, Todo[library]);
+          removeItem(library, Todo[library][item], item);
           buildList(parent, library);
         }
       }
@@ -69,7 +67,7 @@ const addTrashListener = (parent, library) => {
   });
 };
 
-const removeItem = (library, id, todo) => {
+export const removeItem = (library, todo, id) => {
   // remove item from current library
   Todo[library].splice(id, 1);
   updateStorage(library, Todo[library]);

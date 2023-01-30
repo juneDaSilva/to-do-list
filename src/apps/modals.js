@@ -168,11 +168,10 @@ function openModal(library, modal, todo_num) {
 
   // Filter which modal is being called and populate it accordingly
   if (modal.id == "modal") {
-    console.log(library);
     populateInfoModal(library, todo_num);
   } else if (modal.id == "modal-form") {
     populateEditModal(library, todo_num);
-    console.log("submit", library);
+
     listenSubmit(library, todo_num);
   }
 
@@ -210,23 +209,21 @@ function closeModal(modal) {
 // --------------- ----- 2. MODAL POPULATION ----- -------------
 // Populate Info Modal
 const populateInfoModal = (library, todo_num) => {
-  console.log(library);
   const todo = localStorage.getObj(library)[todo_num];
 
   document.querySelector(".details-title").innerHTML = todo[0];
-  document.querySelector(".details-description").innerHTML = todo[1];
-  document.querySelector(".details-content.due").innerHTML = todo[2];
+  document.querySelector(".details-content.due").innerHTML = todo[1];
+  document.querySelector(".details-description").innerHTML = todo[2];
   document.querySelector(".details-content.project").innerHTML = todo[3];
   document.querySelector(".details-content.priority").innerHTML = todo[4];
 };
 
 // Populate Edit modal
 const populateEditModal = (library, todo_num) => {
-  console.log(Todo[library]);
   const todo = localStorage.getObj(library)[todo_num];
   document.querySelector(".edit-title").value = todo[0];
-  document.querySelector(".edit-description").value = todo[1];
-  document.querySelector(".edit-due").value = todo[2];
+  document.querySelector(".edit-due").value = todo[1];
+  document.querySelector(".edit-description").value = todo[2];
 
   // load previously selected project
   const projOptions = document.querySelectorAll(".proj-option");
@@ -275,7 +272,6 @@ const listenSubmit = (library, todo_num) => {
 
     // update display and add new listeners
     displayUpdatedList(main, library);
-
     todo_num = null; // make null because it keeps saving value from previous click?
 
     event.preventDefault();
