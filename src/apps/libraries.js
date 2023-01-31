@@ -69,7 +69,7 @@ export class Todo {
   setProject(value) {
     // only make change if
     //    new value isnt blank
-    //    new value isnt the same as old value
+    //    new value isnt the same as the old one
     if (value != "" && this.#project != value) {
       removeFromProjects(this.#project, this); // remove from old project list
       this.#project = value; // set new project
@@ -88,6 +88,10 @@ export class Todo {
 
 // ----------------------------
 // ------ LIST FUNCTIONS ------
+
+// only make change if
+//    new value isnt blank
+//    new value isnt the same as old value
 
 // Todo maker
 export const MakeNewTodo = (title, due, details, project, priority) => {
