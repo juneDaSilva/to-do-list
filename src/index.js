@@ -9,3 +9,5 @@ loadHome();
 //        items in project lists arent changed
 // TODO:  in home display, 'remove' buttons dont
 //        work for cards below a certain point
+// TODO:  card editing doesnt work if done from
+//        projects tab (maybe same problem as TODO #1)

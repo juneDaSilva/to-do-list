@@ -89,10 +89,6 @@ export class Todo {
 // ----------------------------
 // ------ LIST FUNCTIONS ------
 
-// only make change if
-//    new value isnt blank
-//    new value isnt the same as old value
-
 // Todo maker
 export const MakeNewTodo = (title, due, details, project, priority) => {
   new Todo(title, due, details, project, priority);
