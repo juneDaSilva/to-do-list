@@ -1,6 +1,6 @@
 # TODO APP: Task bee
 
-Live demo: https://junedev-html.github.io/to-do-list/
+Live demo: https://junedasilva.github.io/to-do-list/
 
 Keep track of tasks with project folders and notes.
 
